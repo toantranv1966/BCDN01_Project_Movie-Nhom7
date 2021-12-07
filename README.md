@@ -45,9 +45,9 @@
 
 
 
-### 1. Clone repo
+### 1. Clone repo ( Lấy dự án trên gitHub về local )
 
 ```
-$ git clone git@github.com:basir/amazona.git
-$ cd amazona
+$ git clone https://github.com/toantranv1966/BCDN01_Project_Movie-Nhom7.git
+
 ```
