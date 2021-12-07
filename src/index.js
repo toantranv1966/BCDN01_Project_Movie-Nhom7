@@ -3,11 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+//config redux
+import {Provider} from 'react-redux';
+import {store} from './redux/configStore';
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+//Cấu hình antd
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
