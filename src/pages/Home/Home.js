@@ -1,37 +1,57 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import CarouselHome from '../../components/CarouselHome/CarouselHome';
-import Film from '../../components/Film/Film';
-import {layDanhSachPhimAction} from '../../redux/actions/QuanLyPhimAction';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import styled from "styled-components";
+import HomeBannerCarousel from "../../components/Home/HomeBannerCarousel";
+import HomeBookTicket from "../../components/Home/HomeBookTicket";
+import HomePhimCarousel from "../../components/Home/HomePhimCarousel";
+import { layDanhSachBannerPhim } from "../../redux/actions/FilmActions";
+import { layDanhSachPhimAction } from "../../redux/actions/FilmActions";
 
-export default function Home(props) {
-    //Lấy thông tin arrFilm từ QuanLyPhimReducer về component
-    const {arrFilm} = useSelector(state=>state.QuanLyPhimReducer);
+const Home = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(layDanhSachBannerPhim);
+    dispatch(layDanhSachPhimAction);
+  }, [dispatch]);
 
-    //Tạo ra hàm dispatch 
-    const dispatch = useDispatch();
+  const { mangBannerPhim, mangPhim, isLoadSuccess } = useSelector(
+    (rootReducer) => rootReducer.FilmReducer
+  );
 
-    useEffect(() => {
-        //Tạo ra action là function
-        const action = layDanhSachPhimAction();
-        //Dispatch thực thi action
-        dispatch(action);
-
-    }, []);
-
-    const renderPhim = () => {
-        return arrFilm.map((item, index) => {
-            return <Film phim={item} key={index}/>
-        })
-    }
-
-    return (
-        <div className="container">
-            <CarouselHome />
-            <h1>Danh sách phim</h1>
-            <div className="row">
-                {renderPhim()}
-            </div>
-        </div>
-    )
-}
+  return (
+    <>
+      {!isLoadSuccess ? (
+        <Loading>
+          <div style={{ width: "100%", textAlign: "center" }}>
+            <img src="./img/logo.png" alt="logo" />
+            <p>Đang tải dữ liệu ...</p>
+          </div>
+        </Loading>
+      ) : (
+        <>
+          <HomeBannerCarousel danhSachBanner={mangBannerPhim} />
+          <HomeBookTicket danhSachPhim={mangPhim} />
+          <HomePhimCarousel danhSachPhim={mangPhim} />
+        </>
+      )}
+    </>
+  );
+};
+const Loading = styled.div`
+  width: 100%;
+  height: calc(100vh - 60px);
+  margin-top: 60px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 100px;
+    margin-bottom: 10px;
+  }
+  p {
+    color: var(--primary-color);
+    font-weight: 500;
+  }
+`;
+export default Home;
