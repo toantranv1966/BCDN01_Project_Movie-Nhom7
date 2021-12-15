@@ -7,8 +7,14 @@
 }
 :root {
   --primary-color: #fb4226;
+  --light-color: #ff7852;
+  --dark-color: #c00000;
+  --text-dark-color: #fff;
+  --text-light-color: #242424;
+  --hover-color: #cc351e;
   --danger-color: #fb4226;
   --container-width: 70%;
+  --header-height: 60px;
 }
 html,
 body {

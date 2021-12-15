@@ -5,49 +5,6 @@ import { FaPlay } from "react-icons/fa";
 import ModalVideo from "react-modal-video";
 import "react-modal-video/css/modal-video.min.css";
 
-const HomeBannerCarousel = (props) => {
-  const [isOpen, setOpen] = useState(false);
-
-  const renderCarouselBanner = () => {
-    return props.danhSachBanner.map((item, index) => {
-      return (
-        <div key={index}>
-          <CarouselBannerItem>
-            <CarouselPlay
-              onClick={() => {
-                setOpen(true);
-              }}
-            >
-              <FaPlay />
-            </CarouselPlay>
-            <img src={item.hinhAnh} alt="" />
-          </CarouselBannerItem>
-        </div>
-      );
-    });
-  };
-  const settings = {
-    arrows: false,
-    dots: true,
-    infinite: true,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-  return (
-    <CarouselWrapper>
-      <ModalVideo
-        channel="youtube"
-        autoplay={1}
-        isOpen={isOpen}
-        videoId="kBY2k3G6LsM"
-        onClose={() => setOpen(false)}
-      />
-      <Slider {...settings}>{renderCarouselBanner()}</Slider>
-    </CarouselWrapper>
-  );
-};
 const CarouselPlay = styled.div`
   position: absolute;
   top: 50%;
@@ -105,4 +62,48 @@ const CarouselBannerItem = styled.div`
     height: calc(100vh - 60px);
   }
 `;
+const HomeBannerCarousel = ({ danhSachBanner }) => {
+  const [isOpen, setOpen] = useState(false);
+
+  const renderCarouselBanner = () => {
+    return danhSachBanner.map((item, index) => {
+      return (
+        <div key={index}>
+          <CarouselBannerItem>
+            <CarouselPlay
+              onClick={() => {
+                setOpen(true);
+              }}
+            >
+              <FaPlay />
+            </CarouselPlay>
+            <img src={item.hinhAnh} alt="" />
+          </CarouselBannerItem>
+        </div>
+      );
+    });
+  };
+  const settings = {
+    arrows: false,
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+  return (
+    <CarouselWrapper>
+      <ModalVideo
+        channel="youtube"
+        autoplay={1}
+        isOpen={isOpen}
+        videoId="kBY2k3G6LsM"
+        onClose={() => setOpen(false)}
+      />
+      <Slider {...settings}>{renderCarouselBanner()}</Slider>
+    </CarouselWrapper>
+  );
+};
+
 export default HomeBannerCarousel;

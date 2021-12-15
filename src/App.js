@@ -11,6 +11,8 @@ import AddNewFilm from "./pages/_AdminPage/Films/AddNew/AddNewFilm";
 import Edit from "./pages/_AdminPage/Films/Edit/Edit";
 import showtime from "./pages/_AdminPage/ShowTime/Showtime";
 import HomeLogin from "./pages/Login/HomeLogin";
+import DetailFilm from "./pages/DetailFilm/DetailFilm";
+import BookTicket from "./pages/BookTicket/BookTicket";
 
 export const history = createBrowserHistory();
 
@@ -18,7 +20,11 @@ function App() {
   return (
     <Router history={history}>
       <Switch>
+        <Route exact path="/login" component={HomeLogin} />
+        <HomeTemplate path="/bookticket" exact Component={BookTicket} />
         <HomeTemplate path="/" exact Component={Home} />
+        <HomeTemplate path="/:idComponent" exact Component={Home} />
+        <HomeTemplate path="/chitiet/:idFilm" exact Component={DetailFilm} />
         <AdminTemplate path="/admin/users" exact Component={Users} />
         <AdminTemplate path="/admin/films" exact Component={Films} />
         <AdminTemplate
@@ -32,7 +38,6 @@ function App() {
           exact
           Component={showtime}
         />
-        <Route exact path="/login" component={HomeLogin} />
       </Switch>
     </Router>
   );

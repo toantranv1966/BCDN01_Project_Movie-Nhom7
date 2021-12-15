@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Route } from "react-router";
 import HomeFooter from "../../components/Home/HomeFooter";
-import HomeHeader from "../../components/Home/HomeHeader";
+import HomeHeader from "../../components/Home/HomeHeader/HomeHeader";
 
 export const HomeTemplate = (props) => {
   // path, exact, Component

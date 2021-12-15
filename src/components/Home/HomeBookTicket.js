@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import DropDown from "./DropDown";
 import { layThongTinLichChieu } from "../../redux/actions/QuanLyRapAction";
+import { history } from "../../App";
 
 const BookTicketNow = (props) => {
   const { danhSachPhim } = props;
@@ -191,7 +192,7 @@ const BookTicketNow = (props) => {
         <Button
           disabled={disabledBtn}
           onClick={() => {
-            console.log("Click");
+            history.push("/bookticket");
           }}
         >
           Mua vé ngay

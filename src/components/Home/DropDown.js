@@ -19,8 +19,11 @@ const DropDown = (props) => {
   useEffect(() => {
     const handleClick = (event) => {
       const { target } = event;
-      if (!refDropDown.current.contains(target)) {
-        setIsDropDown(false);
+
+      if (!refDropDown) {
+        if (!refDropDown.current.contains(target)) {
+          setIsDropDown(false);
+        }
       }
     };
     document.addEventListener("click", handleClick);
