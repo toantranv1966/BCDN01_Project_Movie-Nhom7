@@ -21,7 +21,11 @@ function App() {
     <Router history={history}>
       <Switch>
         <Route exact path="/login" component={HomeLogin} />
-        <HomeTemplate path="/bookticket" exact Component={BookTicket} />
+        <HomeTemplate
+          path="/bookticket/:idShowTime"
+          exact
+          Component={BookTicket}
+        />
         <HomeTemplate path="/" exact Component={Home} />
         <HomeTemplate path="/:idComponent" exact Component={Home} />
         <HomeTemplate path="/chitiet/:idFilm" exact Component={DetailFilm} />

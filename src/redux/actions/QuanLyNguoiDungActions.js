@@ -33,7 +33,6 @@ export const dangNhap = (user) => {
         nguoiDung: result.data.content,
         loginMessage: "",
       });
-      history.push("/");
     });
     promise.catch((error) => {
       dispatch({

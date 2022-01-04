@@ -4,8 +4,15 @@ import FormSignIn from "../../components/HomeLogin/FormSignIn";
 import FormSignUp from "../../components/HomeLogin/FormSignUp";
 import { FaTimes } from "react-icons/fa";
 import { history } from "../../App";
-const HomeLogin = () => {
+import { useSelector } from "react-redux";
+const HomeLogin = (props) => {
   const [isSignIn, setIsSignIn] = useState(true);
+  const { nguoiDung } = useSelector(
+    (rootReducer) => rootReducer.QuanLyNguoiDungReducer
+  );
+  if (Object.keys(nguoiDung).length !== 0) {
+    props.history.goBack();
+  }
   return (
     <LoginWrapper>
       <LoginCard>
@@ -42,7 +49,7 @@ const LoginWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(./img/bg_login.jpg);
+  background-image: url(../img/bg_login.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -68,7 +75,7 @@ const BgCover = styled.div`
   right: 0;
   top: 0;
   z-index: 10;
-  background-image: url(./img/bg_login_2.jpg);
+  background-image: url(../img/bg_login_2.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

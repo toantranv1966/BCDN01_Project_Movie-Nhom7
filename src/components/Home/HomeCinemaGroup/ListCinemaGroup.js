@@ -29,6 +29,7 @@ const ListCinemaGroup = ({ heThongRap, layLichChieuPhim }) => {
       setMaHeThongRap(heThongRap[0].maHeThongRap);
       layLichChieuPhim(heThongRap[0].maHeThongRap);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const renderLogoItem = () => {
     return heThongRap.map((rap) => {

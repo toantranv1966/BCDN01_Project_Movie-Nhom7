@@ -52,7 +52,7 @@ const HomeHeader = () => {
       <HeaderContent>
         {/* Logo */}
         <HeaderLogo onClick={handleLogoClick}>
-          <img src="./img/logo.png" alt="" />
+          <img src="../img/logo.png" alt="" />
         </HeaderLogo>
         {/* Menu */}
         <HeaderMenu>

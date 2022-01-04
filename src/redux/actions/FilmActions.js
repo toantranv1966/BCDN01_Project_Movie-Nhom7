@@ -11,7 +11,6 @@ export const layDanhSachPhimAction = (dispatch) => {
     dispatch({
       type: LAY_DANH_SACH_PHIM,
       data: result.data.content,
-      isLoadSuccess: true,
     });
   });
 
@@ -32,7 +31,7 @@ export const layThongTinChiTietPhimAction = (maPhim) => {
         type: "CHI_TIET_PHIM",
         data: result.data.content,
       });
-      console.log("result", result.data.content);
+      // console.log("result", result.data.content);
     });
     promise.catch((errors) => {
       console.log(errors.response.data);

@@ -54,7 +54,6 @@ const FormSignUp = (props) => {
     onSubmit: (values) => {
       const action = dangKy(values);
       dispatch(action);
-      
     },
   });
   return (
@@ -151,6 +150,7 @@ const FormSignUp = (props) => {
           onClick={() => {
             props.changeSignIn(!props.signIn);
             dispatch({ type: GUI_THONG_BAO, loginMessage: "" });
+            formikSignUp.handleReset();
           }}
         >
           Hãy đăng nhập!

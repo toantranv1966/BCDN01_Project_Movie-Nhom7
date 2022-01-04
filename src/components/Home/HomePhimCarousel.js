@@ -6,6 +6,7 @@ import "react-modal-video/css/modal-video.min.css";
 import styled from "styled-components";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { history } from "../../App";
+import { formatDate } from "../../util/settings/helper";
 
 const HomePhimCarousel = (props) => {
   const settings = {
@@ -24,19 +25,6 @@ const HomePhimCarousel = (props) => {
   const [isOpen, setOpen] = useState(false);
   const [idVideo, setIdVideo] = useState("");
 
-  const formatDate = (dateText) => {
-    let dateValue = new Date(dateText);
-    if (dateValue) {
-      let date =
-        dateValue.getDay() < 10 ? `0${dateValue.getDay()}` : dateValue.getDay();
-      let month =
-        dateValue.getMonth() > 2
-          ? dateValue.getMonth()
-          : `0${dateValue.getMonth()}`;
-      let year = dateValue.getFullYear();
-      return `${date}-${month}-${year}`;
-    }
-  };
   useEffect(() => {
     let danhSachChieu = [];
     if (danhSachPhim.length !== 0) {

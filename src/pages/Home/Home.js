@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
+// import styled from "styled-components";
 import HomeBannerCarousel from "../../components/Home/HomeBannerCarousel";
 import HomeBookTicket from "../../components/Home/HomeBookTicket";
 import HomeCinemaGroup from "../../components/Home/HomeCinemaGroup/HomeCinemaGroup";
@@ -10,12 +10,14 @@ import { layDanhSachBannerPhim } from "../../redux/actions/FilmActions";
 import { layDanhSachPhimAction } from "../../redux/actions/FilmActions";
 import { layThongTinLichChieuHeThongRap } from "../../redux/actions/LichChieuActions";
 import { layThongTinHeThongRap } from "../../redux/actions/QuanLyRapAction";
-// const HomeCinemaGroup = React.lazy(() => {
-//   import("../../components/Home/HomeCinemaGroup/HomeCinemaGroup");
-// });
+
 const Home = (props) => {
   const paramsIdComponent = props.match.params.idComponent;
-  const [idComponent, setIdComponent] = React.useState(paramsIdComponent);
+  const [idComponent, setIdComponent] = useState(paramsIdComponent);
+  const { mangBannerPhim, mangPhim } = useSelector(
+    (rootReducer) => rootReducer.FilmReducer
+  );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,6 +25,7 @@ const Home = (props) => {
     dispatch(layDanhSachPhimAction);
     dispatch(layThongTinHeThongRap);
     dispatch(layThongTinLichChieuHeThongRap);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -46,9 +49,6 @@ const Home = (props) => {
     }
   }, [idComponent]);
 
-  const { mangBannerPhim, mangPhim } = useSelector(
-    (rootReducer) => rootReducer.FilmReducer
-  );
   // if (!isLoadSuccess) {
   //   console.log("Home.js - check is LoadSuccess", isLoadSuccess);
   //   return (
@@ -62,43 +62,32 @@ const Home = (props) => {
   // }
   return (
     <>
-      <HomeBannerCarousel danhSachBanner={mangBannerPhim} />
-      <HomeBookTicket danhSachPhim={mangPhim} />
+      {mangBannerPhim.length !== 0 && (
+        <HomeBannerCarousel danhSachBanner={mangBannerPhim} />
+      )}
+      {mangPhim.length !== 0 && <HomeBookTicket danhSachPhim={mangPhim} />}
+
       <HomePhimCarousel danhSachPhim={mangPhim} />
       <HomeCinemaGroup />
-
-      {/* {!isLoadSuccess ? (
-        <Loading>
-          <div style={{ width: "100%", textAlign: "center" }}>
-            <img src="./img/logo.png" alt="logo" />
-            <p>Đang tải dữ liệu ...</p>
-          </div>
-        </Loading>
-      ) : (
-        <>
-          
-          
-        </>
-      )} */}
     </>
   );
 };
 
-const Loading = styled.div`
-  width: 100%;
-  height: calc(100vh - 60px);
-  margin-top: 60px;
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  img {
-    width: 100px;
-    margin-bottom: 10px;
-  }
-  p {
-    color: var(--primary-color);
-    font-weight: 500;
-  }
-`;
+// const Loading = styled.div`
+//   width: 100%;
+//   height: calc(100vh - 60px);
+//   margin-top: 60px;
+//   background-color: white;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   img {
+//     width: 100px;
+//     margin-bottom: 10px;
+//   }
+//   p {
+//     color: var(--primary-color);
+//     font-weight: 500;
+//   }
+// `;
 export default Home;

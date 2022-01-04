@@ -4,6 +4,7 @@ import { QuanLyNguoiDungReducer } from "./reducers/QuanLyNguoiDungReducer";
 import { FilmReducer } from "./reducers/FilmReducer";
 import { QuanLyRapReducer } from "./reducers/QuanLyRapReducer";
 import { LichChieuReducer } from "./reducers/LichChieuReducer";
+import { QuanLyVeReducer } from "./reducers/QuanLyVeReducer";
 //Cấu hình middleware
 import reduxThunk from "redux-thunk";
 
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   FilmReducer,
   QuanLyRapReducer,
   LichChieuReducer,
+  QuanLyVeReducer,
 });
 
 export const store = createStore(rootReducer, applyMiddleware(reduxThunk));

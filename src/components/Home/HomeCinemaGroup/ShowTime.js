@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
-import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
-import Slider from "react-slick";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { history } from "../../../App";
 import { comparTwoDate, formatTime } from "../../../util/settings/helper";
+import DateSlider from "../DateSlider";
 
 const CinemaImg = styled.div`
   img {
@@ -126,86 +125,6 @@ const ShowTimeNumber = styled.button`
     background-color: var(--light-color);
   }
 `;
-const DateGroup = styled.div`
-  padding: 20px 60px;
-  width: 100%;
-  position: relative;
-`;
-const DateItem = styled.div`
-  text-align: center;
-  background-color: #eee;
-  padding: 10px 15px 20px 15px;
-  width: 80px;
-  border-radius: 10px;
-  cursor: pointer;
-  position: relative;
-  transition: 0.5s;
-  ::before,
-  ::after {
-    content: "";
-    background-color: white;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    position: absolute;
-    bottom: 20px;
-    left: -5px;
-  }
-  ::after {
-    right: -5px;
-    left: auto;
-  }
-  :hover,
-  &.active {
-    background-color: var(--light-color);
-    h3,
-    p {
-      color: white;
-    }
-  }
-  span {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: white;
-  }
-  h3 {
-    font-size: 14px;
-    font-weight: 700;
-    transition: 0.5s;
-  }
-  p {
-    margin-bottom: 0px;
-    transition: 0.5s;
-    font-weight: 600;
-    color: #aaa;
-  }
-`;
-const ArrowButton = styled.div`
-  position: absolute;
-  top: 50%;
-  ${(props) => (props.rightSide ? "right: 20px;" : "left: 20px;")}
-  transform: translatey(-50%);
-  font-size: 16px;
-  border-radius: 5px;
-  color: #242424;
-  background-color: #eee;
-  border: 1px solid transparent;
-  height: calc(100% - 40px);
-  cursor: pointer;
-  transition: 0.5s;
-  display: flex;
-  align-items: center;
-  padding: 0px 5px;
-  :hover {
-    color: white;
-    background-color: var(--light-color);
-  }
-  :active {
-    background-color: var(--primary-color);
-  }
-`;
 const Container = styled.div`
   display: flex;
   height: calc(100% - 80px);
@@ -213,24 +132,15 @@ const Container = styled.div`
   border: 1px solid #ddd;
 `;
 const TimeItem = ({ danhSachLichChieu, ngayChieu }) => {
-  const [maLichChieu, setMaLichChieu] = useState("");
-  useEffect(() => {
-    console.log("Run useEffect");
-    if (danhSachLichChieu.length !== 0) {
-      setMaLichChieu(danhSachLichChieu[0].maLichChieu);
-    }
-  }, []);
   return (
     <ShowTimeGroup>
       {danhSachLichChieu.sort().map((lichChieu) => {
-        if (comparTwoDate(ngayChieu, new Date(lichChieu.ngayChieuGioChieu))) {
+        if (comparTwoDate(ngayChieu, lichChieu.ngayChieuGioChieu)) {
           return (
             <ShowTimeNumber
               key={lichChieu.maLichChieu}
-              className={lichChieu.maLichChieu === maLichChieu ? "active" : ""}
               onClick={() => {
-                setMaLichChieu(lichChieu.maLichChieu);
-                history.push("/bookticket");
+                history.push(`/bookticket/${lichChieu.maLichChieu}`);
               }}
               disabled={
                 new Date(lichChieu.ngayChieuGioChieu).getTime() <
@@ -249,8 +159,8 @@ const TimeItem = ({ danhSachLichChieu, ngayChieu }) => {
 const ShowTime = ({ lichChieuHeThongRap }) => {
   const [maCumRap, setMaCumRap] = useState("");
   const [danhSachPhim, setDanhSachPhim] = useState([]);
-  const [activeDate, setActiveDate] = useState(new Date());
-  const refSliderDate = useRef();
+  const [activeDate, setActiveDate] = useState(new Date("01-01-2019"));
+
   useEffect(() => {
     if (lichChieuHeThongRap.length !== 0) {
       setMaCumRap(lichChieuHeThongRap[0].lstCumRap[0].maCumRap);
@@ -265,6 +175,7 @@ const ShowTime = ({ lichChieuHeThongRap }) => {
       );
       setDanhSachPhim(cumRap.danhSachPhim);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [maCumRap]);
 
   const renderListCumRap = () => {
@@ -331,41 +242,6 @@ const ShowTime = ({ lichChieuHeThongRap }) => {
     });
   };
 
-  const renderShowTimeDate = () => {
-    let dataDate = [];
-    let arrDay = ["Th 2", "Th 3", "Th 4", "Th 5", "Th 6", "Th 7", "CN"];
-    for (let index = 0; index < 7; index++) {
-      let toDay = new Date("01/01/2019");
-      dataDate.push(new Date(toDay.getTime() + index * 24 * 60 * 60 * 1000));
-    }
-    return dataDate.map((date, index) => {
-      return (
-        <div key={index}>
-          <DateItem
-            onClick={() => {
-              setActiveDate(date);
-            }}
-            className={comparTwoDate(date, activeDate) ? "active" : ""}
-          >
-            <span></span>
-            <h3>{`${
-              date.getDate() < 10 ? `0${date.getDate()}` : date.getDate()
-            }-${date.getMonth() + 1}`}</h3>
-            <p>{arrDay[date.getDay()]}</p>
-          </DateItem>
-        </div>
-      );
-    });
-  };
-
-  const settings = {
-    arrows: false,
-    dots: false,
-    infinite: false,
-    autoplay: false,
-    slidesToShow: 6,
-    slidesToScroll: 1,
-  };
   return (
     <Container>
       <CinemaContainer>{renderListCumRap()}</CinemaContainer>
@@ -373,26 +249,11 @@ const ShowTime = ({ lichChieuHeThongRap }) => {
         {danhSachPhim.length === 0 ? (
           <></>
         ) : (
-          <DateGroup>
-            <Slider ref={refSliderDate} {...settings}>
-              {renderShowTimeDate()}
-            </Slider>
-            <ArrowButton
-              onClick={() => {
-                refSliderDate.current.slickPrev();
-              }}
-            >
-              <AiOutlineLeft />
-            </ArrowButton>
-            <ArrowButton
-              rightSide
-              onClick={() => {
-                refSliderDate.current.slickNext();
-              }}
-            >
-              <AiOutlineRight />
-            </ArrowButton>
-          </DateGroup>
+          <DateSlider
+            startDate="01-01-2019"
+            activeDate={activeDate}
+            setActiveDate={setActiveDate}
+          />
         )}
         <ShowTimePhimGroup>{renderLichChieuCumRap()}</ShowTimePhimGroup>
       </ShowTimeContainer>

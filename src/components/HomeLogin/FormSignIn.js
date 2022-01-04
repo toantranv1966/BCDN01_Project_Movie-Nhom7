@@ -80,6 +80,7 @@ const FormSignIn = (props) => {
           onClick={() => {
             props.changeSignUp(!props.signIn);
             dispatch({ type: GUI_THONG_BAO, loginMessage: "" });
+            formik.handleReset();
           }}
         >
           , Hãy đăng ký!
