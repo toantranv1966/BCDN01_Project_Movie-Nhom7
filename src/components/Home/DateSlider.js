@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
 import { arrDay, comparTwoDate } from "../../util/settings/helper";
+// import {AiOutlineLeft, AiOutlineRight} from "react-icons/ai"
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
 const DateItem = styled.div`

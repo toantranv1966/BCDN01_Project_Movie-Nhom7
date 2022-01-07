@@ -5,6 +5,7 @@ import ModalVideo from "react-modal-video";
 import "react-modal-video/css/modal-video.min.css";
 import styled from "styled-components";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+// import {AiOutlineLeft, AiOutlineRight} from "react-icons/ai"
 import { history } from "../../App";
 import { formatDate } from "../../util/settings/helper";
 
