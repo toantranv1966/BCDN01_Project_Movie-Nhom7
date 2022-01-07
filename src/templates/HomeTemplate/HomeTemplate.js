@@ -1,12 +1,7 @@
-<<<<<<< HEAD
 import {Fragment} from 'react';
 import { Route } from 'react-router';
-=======
-import { Fragment } from "react";
-import { Route } from "react-router";
 import HomeFooter from "../../components/Home/HomeFooter";
 import HomeHeader from "../../components/Home/HomeHeader/HomeHeader";
->>>>>>> minh_duc
 
 export const HomeTemplate = (props) => {
   // path, exact, Component
@@ -19,16 +14,6 @@ export const HomeTemplate = (props) => {
       render={(propsRoute) => {
         //props.location, props.history, props.match
 
-<<<<<<< HEAD
-        return <Fragment>
-
-            <Component {...propsRoute}/>
-
-        </Fragment>
-
-    }} />
-}
-=======
         return (
           <Fragment>
             <HomeHeader />
@@ -40,4 +25,3 @@ export const HomeTemplate = (props) => {
     />
   );
 };
->>>>>>> minh_duc
