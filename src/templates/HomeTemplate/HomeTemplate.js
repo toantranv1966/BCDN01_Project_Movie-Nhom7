@@ -1,7 +1,6 @@
 import {Fragment} from 'react';
 import { Route } from 'react-router';
 
-
 export const HomeTemplate = (props) => {
     // path, exact, Component
 
@@ -11,7 +10,7 @@ export const HomeTemplate = (props) => {
         //props.location, props.history, props.match
 
         return <Fragment>
-            
+
             <Component {...propsRoute}/>
 
         </Fragment>

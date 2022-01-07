@@ -5,9 +5,6 @@ import { useFormik } from 'formik';
 import moment from 'moment';
 import {quanLyDatVeService} from '../../../services/QuanLyDatVeService';
 
-
-
-
 export default function Showtime(props) {
 
     const formik = useFormik({
@@ -18,18 +15,15 @@ export default function Showtime(props) {
             giaVe:''
         },
         onSubmit : async (values) => {
-            console.log('Values',values);
             try{
                 const result = await quanLyDatVeService.taoLichChieu(values);
 
                 alert(result.data.content)
 
-
             }catch(error){
                 console.log("error",error.response?.data);
             }
         }
-
     })
 
     const [state, setstate] = useState({
@@ -38,7 +32,7 @@ export default function Showtime(props) {
     });
 
     useEffect( async () => {
-
+        // Khi Component load lên thì gọi api
         try{
             let result = await quanLyRapService.layThongTinHeThongRap();
 
@@ -46,17 +40,13 @@ export default function Showtime(props) {
                 ...state,
                 heThongRapChieu:result.data.content
             })
-
-            console.log('result',result.data.content);
-
         }catch(error) {
             console.log(error)
         }
-        
-       
     }, [])
 
     const handleChangeHeThongRap = async (value) => {
+        // Gọi api khi có sự kiện onChange
         // Từ hệ thống rạp call api lấy thông tin rạp
         try {
             let result = await quanLyRapService.layThongTinCumRam(value);
@@ -65,7 +55,6 @@ export default function Showtime(props) {
                 ...state,
                 cumRapChieu: result.data.content
             })
-            console.log('result',result.data.content);
         }catch(error){
             console.log("error",error.response?.data)
         }
@@ -73,22 +62,18 @@ export default function Showtime(props) {
 
     const handleChangeCumRap = (value) => {
         formik.setFieldValue('maRap', value)
-        
     }
 
     const onOk = (values) => {
         formik.setFieldValue('ngayChieuGioChieu',moment(values).format('DD/MM/YYYY hh:mm:ss'));
-        console.log('value',moment(values).format('DD/MM/YYYY hh:mm:ss'));
     }
  
     const onChageDate = (values) => {
         formik.setFieldValue('ngayChieuGioChieu',moment(values).format('DD/MM/YYYY hh:mm:ss'));
-        console.log('value',moment(values).format('DD/MM/YYYY hh:mm:ss'));
     }
 
     const onChageNumber = (values) => {
         formik.setFieldValue('giaVe',values);
-        console.log('giaVe',values);
     }
 
     const convertSelectHTR = () => {
@@ -108,13 +93,10 @@ export default function Showtime(props) {
     >
         <h3 className="text-2xl">Tạo lịch chiếu</h3>
       <Form.Item label="Hệ thống rạp">
-      {/* Cách 1:  */}
-            {/* <Cascader options={state.heThongRapChieu?.map((htr,index)=> ({label:htr.tenHeThongRap,value:htr.tenHeThongRap}))} onChange={handleChangeHeThongRap} placeholder="Chọn hệ thống rạp" /> */}
             <Select options={convertSelectHTR()} onChange={handleChangeHeThongRap} placeholder="Chọn hệ thống rạp" />
       </Form.Item>
       <Form.Item label="Cụm rạp">
-        <Select options={state.cumRapChieu?.map((cumRap,index)=>({label:cumRap.tenCumRam,value:cumRap.maCumRam}))} onChange={handleChangeCumRap} placeholder="Chọn cụm rạp" />
-            {/* <Select options={state.cumRapChieu?.map((cumRap,index)=>({label:cumRap.tenCumRam,value:cumRap.tenCumRam}))} onChange={handleChangeHeThongRap} placeholder="Chọn cụm rạp" /> */}
+          <Select options={state.cumRapChieu?.map((cumRap,index)=>({label:cumRap.tenCumRap,value:cumRap.maCumRap}))} onChange={handleChangeCumRap} placeholder="Chọn cụm rạp"/>
       </Form.Item>
       <Form.Item label="Ngày chiếu giờ chiếu">
          <DatePicker format="DD/MM/YYYY hh:mm:ss" showTime onChange={onChageDate} onOk={onOk} />
@@ -125,8 +107,6 @@ export default function Showtime(props) {
       <Form.Item label="Chức năng">
         <Button htmlType='submit'>Tạo lịch chiếu</Button>
       </Form.Item>
-
-     
     </Form>
     )
 }

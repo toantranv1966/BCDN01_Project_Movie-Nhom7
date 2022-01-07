@@ -1,75 +1,102 @@
-import React, {Fragment, useEffect} from "react";
+// Import from ReduxMiddleWare.js
+import React, { Fragment, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
 import { Table } from "antd";
 import { Input, Space } from "antd";
 import { AudioOutlined, DeleteOutlined, EditOutlined, SearchOutlined, WindowsFilled, CalendarOutlined } from "@ant-design/icons";
 import { Button } from "antd/lib/radio";
-import {useSelector, useDispatch} from 'react-redux';
-import {layDanhSachPhimAction, xoaPhimAction} from '../../../redux/actions/QuanLyPhimAction';
 import { object } from "yup";
 import { NavLink } from "react-router-dom";
 import { history } from "../../../App";
+import {layDanhSachNguoiDung, xoaNguoiDungAction} from "../../../redux/actions/QuanLyNguoiDungActions"
 
 const { Search } = Input;
 
 export default function Users() {
-// Kết nối Reducer lấy danh sách phim
 
-// const arrFilm = useSelector(rootReducer => rootReducer.FilmReducer.mangPhim);
-const {arrFilm} = useSelector(state=>state.QuanLyPhimReducer);
+  let dispatch = useDispatch();
 
-//Tạo ra hàm dispatch 
-const dispatch = useDispatch();
+  const {mangNguoiDung} = useSelector(state=>state.QuanLyNguoiDungReducer);
 
-useEffect(() => {
-    //Tạo ra action là function
-    // const action = layDanhSachPhimAction();
-    // // const action  = layDanhSachPhim;
-    // //Dispatch thực thi action
-    // dispatch(action);
-    dispatch(layDanhSachPhimAction());
-    
-}, [])
+  useEffect(() => {
+      const action = layDanhSachNguoiDung();
+      dispatch(action);
 
-// console.log("Mảng phim", arrFilm);
-
-// Kết thúc Kết nối Reducer lấy danh sách phim
+  },[])
 
     const columns = [
         {
-          title: "Mã phim",
-          dataIndex: "maPhim",
-          width: '10%',
-          sorter: (a, b) => b.maPhim - a.maPhim,
-          sortDirections: ['descend','ascend'],
-          // sortOrder: 'descend'
-        },
-        {
-          title: "Hình ảnh",
-          dataIndex: "hinhAnh",
-          
-          render: (text,films,index) => {return <Fragment>
-            <img src={films.hinhAnh} alt={films.tenPhim} width={50} height={50} onError={(e) => {e.target.onError = null; e.target.src = `https://picsum.photos/id/${index}/50/50` }}/>
-
+          title: "STT",
+          dataIndex: "index",
+          width: '2%',
+          // sorter: (a, b) => b.maPhim - a.maPhim,
+          // sortDirections: ['descend','ascend'],
+          render: (text,users,index) => {return <Fragment>
+            {index + 1}
           </Fragment>},
-          width: '15%',
         },
         {
-          title: "Tên phim",
-          dataIndex: "tenPhim",
-          
+          title: "Tài khoản",
+          dataIndex: "taiKhoan",
+          render: (text,users,index) => {return <Fragment>
+            {users.taiKhoan}
+          </Fragment>},
+          width: '18%',
+        },
+        {
+          title: "Mật khẩu",
+          dataIndex: "matKhau",
+          render: (text,users,index) => {return <Fragment>
+            {users.matKhau}
+          </Fragment>},
+          // sorter: (a, b) => {
+          //   let tenPhimA = a.tenPhim.toLowerCase().trim();
+          //   let tenPhimB = b.tenPhim.toLowerCase().trim();
+          //   if(tenPhimA > tenPhimB){
+          //     return 1;
+          //   }
+          //   return -1;
+          // },
+          width: '10%',
+          sortDirections: ['descend','ascend'],
+        },
+        {
+          title: "Họ tên",
+          dataIndex: "hoTen",
           sorter: (a, b) => {
-            let tenPhimA = a.tenPhim.toLowerCase().trim();
-            let tenPhimB = b.tenPhim.toLowerCase().trim();
-            if(tenPhimA > tenPhimB){
+            let hoTenA = a.hoTen.toLowerCase().trim();
+            let hoTenB = b.hoTen.toLowerCase().trim();
+            if(hoTenA > hoTenB){
               return 1;
             }
             return -1;
           },
-          width: '20%',
+          render: (text,users,index) => {return <Fragment>
+            {users.hoTen}
+          </Fragment>},
+          width: '25%',
           sortDirections: ['descend','ascend'],
         },
         {
-          title: "Mô tả",
+          title: "Email",
+          dataIndex: "email",
+          sorter: (a, b) => {
+            let emailA = a.email.toLowerCase().trim();
+            let emailB = b.email.toLowerCase().trim();
+            if(emailA > emailB){
+              return 1;
+            }
+            return -1;
+          },
+          render: (text,users,index) => {return <Fragment>
+              {users.email}
+          </Fragment>},
+          width: '25%',
+          sortDirections: ['descend','ascend'],
+        },
+        {
+          title: "Số điện thoại",
           dataIndex: "moTa",
           sorter: (a, b) => {
             let moTaA = a.moTa.toLowerCase().trim();
@@ -79,32 +106,27 @@ useEffect(() => {
             }
             return -1;
           },
-          render: (text,films,index) => {return <Fragment>
-
-            {/* Chua hoạt động */}
-
-            {films.moTa.lenght>50 ? films.moTa.subStr(0,50) + '...' : films.moTa}
-
+          render: (text,users,index) => {return <Fragment>
+            {users.soDt}
           </Fragment>},
-          width: '25%',
+          width: '10%',
           sortDirections: ['descend','ascend'],
         },
         {
           title: "Hành động",
           dataIndex: "hanhDong",
-          render: (text,films,index) => {return <Fragment>
+          render: (text,users,index) => {return <Fragment>
 
-            <NavLink key={1} className="mr-2 text-2xl" to={`/admin/films/edit/${films.maPhim}`}><EditOutlined style={{color:'blue'}}/></NavLink>;
+            <NavLink key={1} className="mr-2 text-2xl" to={`/admin/users/edit/${users.taiKhoan}`}><EditOutlined style={{color:'blue'}}/></NavLink>;
             <span style={{cursor:'pointer'}} key={2} className="" 
             onClick={()=>{
-              if(window.confirm('Bạn có chắc muốn xóa phim' + films.tenPhim)){
+              if(window.confirm('Bạn có chắc muốn xóa người dùng?' + users.hoTen)){
                 // Gọi action xóa
-                dispatch(xoaPhimAction(films.maPhim));
+                dispatch(xoaNguoiDungAction(users.taiKhoan));
 
+                // dispatch(xoaPhimAction(users.maPhim));
               }
-
             }}><DeleteOutlined style={{color:'red'}}/></span>;
-            <NavLink key={3} className="mr-2 text-2xl" to={`/admin/films/showtimes/${films.maPhim}`}><CalendarOutlined style={{color:'green'}}/></NavLink>;
 
           </Fragment>},
           
@@ -113,24 +135,23 @@ useEffect(() => {
         
       ];
       
-      
-      const data = arrFilm;
+      const data = mangNguoiDung;
         
       function onChange(pagination, filters, sorter, extra) {
         console.log("params", pagination, filters, sorter, extra);
       }
       
       const onSearch = value => {
-        console.log(value);
-        // Gọi Api layDanhSachPhim
-        dispatch(layDanhSachPhimAction(value));
+        console.log('Họ Tên',value);
+        // Gọi Api layDanhSachNguoiDung
+        dispatch(layDanhSachNguoiDung(value));
       } 
 
   return (
     <div >
       <h3 className="text-4xl">Quản lý User</h3>
       <Button className="mb-5" onClick={()=>{
-        history.push('/admin/films/addnewfilm');
+        history.push('/admin/users/addnewuser');
       }}>Thêm User</Button>
       <Search
         className="mb-5"

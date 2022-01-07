@@ -33,16 +33,28 @@ export const AdminTemplate = (props) => {
 
 <Layout>
         <Header style={{ padding: 10 }}>
-          <Avatar style={{ float: 'right' }} src='./dp.png' />
-          <Title style={{ color: 'white' }} level={3}>Movie</Title>
+          {/* <Avatar>
+            <NavLink to="/adminlogin">Đăng nhập</NavLink>
+          </Avatar> */}
+          {/* <Avatar style={{ float: 'right' }} src='./dp.png' /> */}
+          <Avatar style={{ float: 'right' }} src='./dp.png'>
+            <NavLink to="/adminlogin">Đăng nhập</NavLink>
+          </Avatar>
+          
+          <Title style={{ color: 'white' }} level={3}>Movie CyberSoft</Title>
         </Header>
         <Layout>
           <Sider>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+
+          <SubMenu key="2" icon={<UserOutlined />} title="User">
             <Menu.Item key="1" icon={<UserOutlined />}>
               <NavLink to="/admin/users">User</NavLink>
-              
             </Menu.Item>
+              <Menu.Item key="11" icon={<FileOutlined />}>
+                <NavLink to="/admin/users/addnewuser">Add New</NavLink>
+              </Menu.Item>
+            </SubMenu>
             <SubMenu key="2" icon={<FileOutlined />} title="Films">
               <Menu.Item key="10" icon={<FileOutlined />}>
                 <NavLink to="/admin/films">Films</NavLink>
@@ -53,7 +65,6 @@ export const AdminTemplate = (props) => {
 
             </SubMenu>
             
-
           </Menu>
           </Sider>
           <Layout>

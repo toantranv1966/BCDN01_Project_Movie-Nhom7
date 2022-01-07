@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import CarouselHome from '../../components/CarouselHome/CarouselHome';
 import Film from '../../components/Film/Film';
-import {layDanhSachPhimAction} from '../../redux/actions/QuanLyPhimAction';
+import {layDanhSachPhimAction} from '../../redux/actions/QuanLyPhimAction'
 
 export default function Home(props) {
-    //Lấy thông tin arrFilm từ QuanLyPhimReducer về component
+    //Lấy thông tin mangPhim từ FilmReducer về component
     const {arrFilm} = useSelector(state=>state.QuanLyPhimReducer);
 
     //Tạo ra hàm dispatch 

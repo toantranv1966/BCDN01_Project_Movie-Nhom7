@@ -4,7 +4,6 @@ import { Input, Space } from "antd";
 import { AudioOutlined, DeleteOutlined, EditOutlined, SearchOutlined, WindowsFilled, CalendarOutlined } from "@ant-design/icons";
 import { Button } from "antd/lib/radio";
 import {useSelector, useDispatch} from 'react-redux';
-// import {layDanhSachPhimAction} from '../../../redux/actions/FilmActions';
 import {layDanhSachPhimAction, xoaPhimAction} from '../../../redux/actions/QuanLyPhimAction';
 import { object } from "yup";
 import { NavLink } from "react-router-dom";
@@ -15,25 +14,16 @@ const { Search } = Input;
 export default function Films() {
 // Kết nối Reducer lấy danh sách phim
 
-// const arrFilm = useSelector(rootReducer => rootReducer.FilmReducer.mangPhim);
 const {arrFilm} = useSelector(state=>state.QuanLyPhimReducer);
 
 //Tạo ra hàm dispatch 
 const dispatch = useDispatch();
 
 useEffect(() => {
-    //Tạo ra action là function
-    // const action = layDanhSachPhimAction();
-    // // const action  = layDanhSachPhim;
-    // //Dispatch thực thi action
-    // dispatch(action);
+
     dispatch(layDanhSachPhimAction());
     
 }, [])
-
-// console.log("Mảng phim", arrFilm);
-
-// Kết thúc Kết nối Reducer lấy danh sách phim
 
     const columns = [
         {
@@ -82,8 +72,6 @@ useEffect(() => {
           },
           render: (text,films,index) => {return <Fragment>
 
-            {/* Chua hoạt động */}
-
             {films.moTa.lenght>50 ? films.moTa.subStr(0,50) + '...' : films.moTa}
 
           </Fragment>},
@@ -101,7 +89,6 @@ useEffect(() => {
               if(window.confirm('Bạn có chắc muốn xóa phim' + films.tenPhim)){
                 // Gọi action xóa
                 dispatch(xoaPhimAction(films.maPhim));
-
               }
 
             }}><DeleteOutlined style={{color:'red'}}/></span>;
@@ -114,15 +101,12 @@ useEffect(() => {
         
       ];
       
-      
       const data = arrFilm;
         
       function onChange(pagination, filters, sorter, extra) {
-        console.log("params", pagination, filters, sorter, extra);
       }
       
       const onSearch = value => {
-        console.log(value);
         // Gọi Api layDanhSachPhim
         dispatch(layDanhSachPhimAction(value));
       } 

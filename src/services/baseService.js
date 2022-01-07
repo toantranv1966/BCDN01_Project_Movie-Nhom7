@@ -9,7 +9,7 @@ export class baseService {
             url:`${DOMAIN}/${url}`,
             method:'PUT',
             data:model,
-            headers: {'Authorization': 'Bearer ' + localStorage.getItem(TOKEN)} //JWT
+            headers: {'TokenCybersoft': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJGcm9udCBFbmQgNjYiLCJIZXRIYW5TdHJpbmciOiIzMS8wMy8yMDIyIiwiSGV0SGFuVGltZSI6IjE2NDg2ODQ4MDAwMDAiLCJuYmYiOjE2MTc1NTU2MDAsImV4cCI6MTY0ODgzMjQwMH0.x2aYBurEV6HW_u5m4Fhmr7bbp60q1hcW3_KcQ6nrySI', 'Authorization': 'Bearer ' + localStorage.getItem(TOKEN)}
         }) 
     }
 
@@ -18,7 +18,7 @@ export class baseService {
             url:`${DOMAIN}/${url}`,
             method:'POST',
             data:model,
-            headers: {'Authorization': 'Bearer ' + localStorage.getItem(TOKEN)} //JWT
+            headers: {'TokenCybersoft': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJGcm9udCBFbmQgNjYiLCJIZXRIYW5TdHJpbmciOiIzMS8wMy8yMDIyIiwiSGV0SGFuVGltZSI6IjE2NDg2ODQ4MDAwMDAiLCJuYmYiOjE2MTc1NTU2MDAsImV4cCI6MTY0ODgzMjQwMH0.x2aYBurEV6HW_u5m4Fhmr7bbp60q1hcW3_KcQ6nrySI', 'Authorization': 'Bearer ' + localStorage.getItem(TOKEN)}
         }) 
     }
 
@@ -27,7 +27,7 @@ export class baseService {
         return Axios({
             url:`${DOMAIN}/${url}`,
             method:'GET',
-            headers: {'Authorization': 'Bearer ' + localStorage.getItem(TOKEN)} //token yêu cầu từ backend chứng minh user đã đăng nhập rồi
+            headers: {'TokenCybersoft': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJGcm9udCBFbmQgNjYiLCJIZXRIYW5TdHJpbmciOiIzMS8wMy8yMDIyIiwiSGV0SGFuVGltZSI6IjE2NDg2ODQ4MDAwMDAiLCJuYmYiOjE2MTc1NTU2MDAsImV4cCI6MTY0ODgzMjQwMH0.x2aYBurEV6HW_u5m4Fhmr7bbp60q1hcW3_KcQ6nrySI', 'Authorization': 'Bearer ' + localStorage.getItem(TOKEN)}
         })
     }
 
@@ -35,7 +35,7 @@ export class baseService {
         return Axios({
             url:`${DOMAIN}/${url}`,
             method:'DELETE',
-            headers: {'Authorization': 'Bearer ' + localStorage.getItem(TOKEN)} //token yêu cầu từ backend chứng minh user đã đăng nhập rồi
+            headers: {'TokenCybersoft': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJGcm9udCBFbmQgNjYiLCJIZXRIYW5TdHJpbmciOiIzMS8wMy8yMDIyIiwiSGV0SGFuVGltZSI6IjE2NDg2ODQ4MDAwMDAiLCJuYmYiOjE2MTc1NTU2MDAsImV4cCI6MTY0ODgzMjQwMH0.x2aYBurEV6HW_u5m4Fhmr7bbp60q1hcW3_KcQ6nrySI', 'Authorization': 'Bearer ' + localStorage.getItem(TOKEN)}
         })
     }
 }

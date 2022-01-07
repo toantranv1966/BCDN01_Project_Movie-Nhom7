@@ -1,12 +1,14 @@
 import {applyMiddleware, combineReducers, createStore} from 'redux'
 import {QuanLyPhimReducer} from '../redux/reducers/QuanLyPhimReducer';
+import { QuanLyNguoiDungReducer } from './reducers/QuanLyNguoiDungReducer';
 
 //Cấu hình middleware
 import reduxThunk  from 'redux-thunk'
 
 const rootReducer = combineReducers({
     //Nơi kháo các state của ứng dụng
-    QuanLyPhimReducer:QuanLyPhimReducer
+    QuanLyPhimReducer:QuanLyPhimReducer,
+    QuanLyNguoiDungReducer:QuanLyNguoiDungReducer
 
 });
 

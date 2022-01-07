@@ -1,25 +1,21 @@
-import React, { Fragment } from 'react'
-import { Route } from 'react-router'
+import { Fragment } from 'react';
+import { Route } from 'react-router';
 
-export default function UserTemplate(props) {
+export const UserTemplate = (props) => {
+    // Path, exact, Component
 
-    //props : path , component
-    //HOC: higher order component
+    const {Component, ...restProps} = props;
+
+
     return (
-        <div className="w-100">
-            <Route exact path={props.path} render={(propsRoute)=>{
+            <Route {...restProps} render={(propsRoute)=>{
+                // props.location, props.match, props.history
 
                 return <Fragment>
-                    <div className="row">
-                        <div className="m-0 p-0 col-6">
-                            <img className="w-100" src="https://picsum.photos/2000" style={{height:'100vh'}} alt="..."/>
-                        </div>
-                        <div className="m-0 p-0 col-6">
-                            <props.component {...propsRoute} />
-                        </div>
+                    <div className="lg:flex">
+                      <Component {...propsRoute}/>
                     </div>
-                </Fragment>
+                      </Fragment>
             }} />
-        </div>
     )
 }
