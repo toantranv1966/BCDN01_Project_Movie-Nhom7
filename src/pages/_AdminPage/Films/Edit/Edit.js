@@ -1,22 +1,18 @@
 import React, { useState,useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 import {
   Form,
   Input,
-  Button,
   Radio,
-  Select,
-  Cascader,
   DatePicker,
   InputNumber,
-  TreeSelect,
   Switch,
 } from "antd";
 import { useFormik } from "formik";
 import moment from "moment";
 import { useDispatch,useSelector } from "react-redux";
-import { themPhimUploadHinhAction } from "../../../../redux/actions/types/QuanLyPhimActions";
+// import { themPhimUploadHinhAction } from "../../../../redux/actions/types/QuanLyPhimActions";
 import {capNhatPhimUploadAction, layThongTinPhimAction} from "../../../../redux/actions/QuanLyPhimAction";
 import {GROUPID} from '../../../../util/settings/config';
 
@@ -38,6 +34,7 @@ useEffect(() => {
 
     dispatch(layThongTinPhimAction(id));
     
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
 
   const formik = useFormik({

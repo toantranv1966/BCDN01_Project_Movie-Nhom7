@@ -1,28 +1,17 @@
 import React, { useState } from "react";
-import axios from "axios";
-import {
-  Form,
-  Input,
-  Button,
-  Radio,
-  Select,
-  Cascader,
-  DatePicker,
-  InputNumber,
-  TreeSelect,
-  Switch,
-} from "antd";
+// import axios from "axios";
+import { Form, Input, Radio, DatePicker, InputNumber, Switch } from "antd";
 import { useFormik } from "formik";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 import { themPhimUploadHinhAction } from "../../../../redux/actions/types/QuanLyPhimActions";
-import {GROUPID} from '../../../../util/settings/config'
+import { GROUPID } from "../../../../util/settings/config";
 
 const AddNewFilm = () => {
   const [componentSize, setComponentSize] = useState("default");
   const [imgSrc, setImgSrc] = useState("");
-//   Gởi action lên reducer
-const dispatch = useDispatch();
+  //   Gởi action lên reducer
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -42,17 +31,23 @@ const dispatch = useDispatch();
       // console.log("Values", values);
       values.maNhom = GROUPID;
 
-    //   Tạo đối tượng formdata đưa giá trị values từ formik vào formdata
-    let formdata = new FormData();
-    for(let key in values){
-        if(key!=='hinhAnh'){
-            formdata.append(key,values[key]);
-        }else{
-            formdata.append('File', values.hinhAnh, values.hinhAnh.name);
+      //   Tạo đối tượng formdata đưa giá trị values từ formik vào formdata
+      let formdata = new FormData();
+      for (let key in values) {
+        if (key !== "hinhAnh") {
+          formdata.append(key, values[key]);
+        } else {
+          formdata.append("File", values.hinhAnh, values.hinhAnh.name);
         }
+<<<<<<< HEAD
     }
+=======
+      }
+      // Kiểm tra : console.log('formdata',formdata.get('File'));
+      // Gọi Api gửi các giá trị formdata về backend xử lý
+>>>>>>> minh_duc
 
-    dispatch(themPhimUploadHinhAction(formdata));
+      dispatch(themPhimUploadHinhAction(formdata));
     },
   });
 
@@ -80,10 +75,10 @@ const dispatch = useDispatch();
 
     // Tạo đối tượng để đọc file
     if (
-      file.type === 'image/png' ||
-      file.type === 'image/gif' ||
-      file.type === 'image/jpeg' ||
-      file.type === 'image/jpg'
+      file.type === "image/png" ||
+      file.type === "image/gif" ||
+      file.type === "image/jpeg" ||
+      file.type === "image/jpg"
     ) {
       let reader = new FileReader();
       reader.readAsDataURL(file);
@@ -92,9 +87,9 @@ const dispatch = useDispatch();
         // Hình base 64
         setImgSrc(e.target.result);
       };
-    //   Đem dữ liệu file lưu vào formik
-      formik.setFieldValue('hinhAnh',file);
-    // formik.setErrors() : Dùng để validation
+      //   Đem dữ liệu file lưu vào formik
+      formik.setFieldValue("hinhAnh", file);
+      // formik.setErrors() : Dùng để validation
     }
   };
 
