@@ -37,21 +37,13 @@ React Hooks, Material-UI, Redux, Redux-thunk, Axios, Bootstrap 4(Css)...
 
 3, Config Redux (configStore.js & index.js)
 
-<<<<<<< HEAD
+
 ## Phân công công việc dự án movie:
 
 I/ Trần Văn Toàn : Làm phần backend (Quản trị)
 
-=======
 ## Movie Project Tracker
->>>>>>> minh_duc
-1, Lên kế hoạch
-2, Phân tích yêu cầu
-3, Thiết kế Mockup trang admin
-4, Setup dự án ( tạo cấu trúc thư mục chuẩn, cài đặt thư viện )
-5, Thiết kế trang AdminTemplate
-6, Thiết kế trang Quản lý danh sách phim + load danh sách phim từ API
-7, Thiết kế trang Thêm phim + chức năng thêm phim
+
 <<<<<<< HEAD
 8, Thiết kế trang Edit phim + chức năng edit phim (Sửa lỗi ngày 09/12/2021)
 9, Chức năng xóa phim (Sửa lỗi ngày 09/12/2021)
@@ -74,16 +66,8 @@ I/ Trần Văn Toàn : Làm phần backend (Quản trị)
 
 
 II/ Đức
-=======
-8, Thiết kế trang Edit phim + chức năng edit phim
-9, Chức năng xóa phim
-10, Chức năng tìm kiếm
-11, Thiết kế trang tạo lịch chiếu + chức năng tạo lịch chiếu
-12, Kiểm tra, chỉnh sửa, tối ưu code Admin
-13, Đưa dự án lên gitHub : BCDN01_Project_Movie_Nhom7
 
 
->>>>>>> minh_duc
 
 ### 1. Clone repo ( Lấy dự án trên gitHub về local )
 
