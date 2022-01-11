@@ -10,7 +10,6 @@ import { QuanLyVeReducer } from "./reducers/QuanLyVeReducer";
 import reduxThunk from "redux-thunk";
 
 const rootReducer = combineReducers({
-<<<<<<< HEAD
     //Nơi kháo các state của ứng dụng
     QuanLyPhimReducer:QuanLyPhimReducer,
     QuanLyNguoiDungReducer:QuanLyNguoiDungReducer,

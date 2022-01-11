@@ -1,87 +1,3 @@
-<<<<<<< HEAD
-import React,{useEffect,useState} from 'react';
-import { Form,Select, Input,Cascader,DatePicker,InputNumber, Button, Checkbox, Avatar } from 'antd';
-import {quanLyRapService} from '../../../services/QuanLyRapService';
-import { useFormik } from 'formik';
-import moment from 'moment';
-import {quanLyDatVeService} from '../../../services/QuanLyDatVeService';
-
-export default function Showtime(props) {
-
-    const formik = useFormik({
-        initialValues:{
-            maPhim: props.match.params.id,
-            ngayChieuGioChieu:'',
-            maRap:'',
-            giaVe:''
-        },
-        onSubmit : async (values) => {
-            try{
-                const result = await quanLyDatVeService.taoLichChieu(values);
-
-                alert(result.data.content)
-
-            }catch(error){
-                console.log("error",error.response?.data);
-            }
-        }
-    })
-
-    const [state, setstate] = useState({
-        heThongRapChieu: [],
-        cumRapChieu: []
-    });
-
-    useEffect( async () => {
-        // Khi Component load lên thì gọi api
-        try{
-            let result = await quanLyRapService.layThongTinHeThongRap();
-
-            setstate({
-                ...state,
-                heThongRapChieu:result.data.content
-            })
-        }catch(error) {
-            console.log(error)
-        }
-    }, [])
-
-    const handleChangeHeThongRap = async (value) => {
-        // Gọi api khi có sự kiện onChange
-        // Từ hệ thống rạp call api lấy thông tin rạp
-        try {
-            let result = await quanLyRapService.layThongTinCumRam(value);
-            // Gán giá trị cum rạp vào state.cumRap
-            setstate({
-                ...state,
-                cumRapChieu: result.data.content
-            })
-        }catch(error){
-            console.log("error",error.response?.data)
-        }
-    }
-
-    const handleChangeCumRap = (value) => {
-        formik.setFieldValue('maRap', value)
-    }
-
-    const onOk = (values) => {
-        formik.setFieldValue('ngayChieuGioChieu',moment(values).format('DD/MM/YYYY hh:mm:ss'));
-    }
- 
-    const onChageDate = (values) => {
-        formik.setFieldValue('ngayChieuGioChieu',moment(values).format('DD/MM/YYYY hh:mm:ss'));
-    }
-
-    const onChageNumber = (values) => {
-        formik.setFieldValue('giaVe',values);
-    }
-
-    const convertSelectHTR = () => {
-        return state.heThongRapChieu?.map((htr,index) => {
-            return {label:htr.tenHeThongRap, value:htr.maHeThongRap}
-        })
-=======
 import React, { useState } from "react";
 import { Form, Select, DatePicker, InputNumber, Button } from "antd";
 import { quanLyRapService } from "../../../services/QuanLyRapService";
@@ -114,24 +30,6 @@ export default function Showtime(props) {
     cumRapChieu: [],
   });
 
-  // useEffect( async () => {
-
-  //     try{
-  //         let result = await quanLyRapService.layThongTinHeThongRap();
-
-  //         setstate({
-  //             ...state,
-  //             heThongRapChieu:result.data.content
-  //         })
-
-  //         console.log('result',result.data.content);
-
-  //     }catch(error) {
-  //         console.log(error)
-  //     }
-
-  // }, [])
-
   const handleChangeHeThongRap = async (value) => {
     // Từ hệ thống rạp call api lấy thông tin rạp
     try {
@@ -144,7 +42,6 @@ export default function Showtime(props) {
       console.log("result", result.data.content);
     } catch (error) {
       console.log("error", error.response?.data);
->>>>>>> minh_duc
     }
   };
 
@@ -190,14 +87,6 @@ export default function Showtime(props) {
     >
       <h3 className="text-2xl">Tạo lịch chiếu</h3>
       <Form.Item label="Hệ thống rạp">
-<<<<<<< HEAD
-            <Select options={convertSelectHTR()} onChange={handleChangeHeThongRap} placeholder="Chọn hệ thống rạp" />
-      </Form.Item>
-      <Form.Item label="Cụm rạp">
-          <Select options={state.cumRapChieu?.map((cumRap,index)=>({label:cumRap.tenCumRap,value:cumRap.maCumRap}))} onChange={handleChangeCumRap} placeholder="Chọn cụm rạp"/>
-=======
-        {/* Cách 1:  */}
-        {/* <Cascader options={state.heThongRapChieu?.map((htr,index)=> ({label:htr.tenHeThongRap,value:htr.tenHeThongRap}))} onChange={handleChangeHeThongRap} placeholder="Chọn hệ thống rạp" /> */}
         <Select
           options={convertSelectHTR()}
           onChange={handleChangeHeThongRap}
@@ -213,8 +102,6 @@ export default function Showtime(props) {
           onChange={handleChangeCumRap}
           placeholder="Chọn cụm rạp"
         />
-        {/* <Select options={state.cumRapChieu?.map((cumRap,index)=>({label:cumRap.tenCumRam,value:cumRap.tenCumRam}))} onChange={handleChangeHeThongRap} placeholder="Chọn cụm rạp" /> */}
->>>>>>> minh_duc
       </Form.Item>
       <Form.Item label="Ngày chiếu giờ chiếu">
         <DatePicker

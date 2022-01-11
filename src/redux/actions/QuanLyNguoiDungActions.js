@@ -1,6 +1,8 @@
-<<<<<<< HEAD
-import axios from 'axios';
-
+import axios from "axios";
+import { DOMAIN } from "../../util/settings/config";
+import {DANG_KY, DANG_NHAP, GET_ALL_USER,  GUI_THONG_BAO,} from "./types/QuanLyNguoiDungTypes";
+import { http } from "../../util/settings/setting";
+import { history } from "../../App";
 import { LAY_DANH_SACH_NGUOI_DUNG, DANG_NHAP_ACTION,DANG_KY_ACTION,THONG_TIN_TAI_KHOAN,
     LOAI_NGUOI_DUNG } from './types/QuanLyNguoiDungTypes';
 import {quanLyNguoiDungService} from '../../services/QuanLyNguoiDung'
@@ -136,22 +138,6 @@ export const xoaNguoiDungAction = (taiKhoan) => {
     }
 }
 
-
-
-
-
-=======
-import axios from "axios";
-import { DOMAIN } from "../../util/settings/config";
-import {
-  DANG_KY,
-  DANG_NHAP,
-  GET_ALL_USER,
-  GUI_THONG_BAO,
-} from "./types/QuanLyNguoiDungTypes";
-import { http } from "../../util/settings/setting";
-import { history } from "../../App";
-
 export const getAllUserAction = (dispatch) => {
   //Xử lý và cò được dữ liệu rồi dispatch lần 2
   let promise = axios({
@@ -204,4 +190,3 @@ export const dangKy = (user) => {
     });
   };
 };
->>>>>>> minh_duc

@@ -5,9 +5,12 @@ import { useDispatch } from "react-redux";
 import { DANG_XUAT } from "../../../redux/actions/types/QuanLyNguoiDungTypes";
 import { history } from "../../../App";
 import styled from "styled-components";
+import { Select } from 'antd';
 
-const HomeHeaderLogin = ({ nguoiDung }) => {
-  const isLogin = Object.keys(nguoiDung).length !== 0; //defaut false
+// const HomeHeaderLogin = ( {nguoiDung} ) => { Đức
+// Toàn sửa lỗi 
+const HomeHeaderLogin = (nguoiDung) => {
+  const isLogin = Object.keys(nguoiDung).length !== 0;
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
 
@@ -23,7 +26,8 @@ const HomeHeaderLogin = ({ nguoiDung }) => {
             <span>
               <FaUser />
             </span>
-            <span>{nguoiDung.hoTen}</span>
+            {/* <span>{nguoiDung.hoTen}</span> */}
+            <span>User</span>
             <span>
               <FaAngleDown />
             </span>
