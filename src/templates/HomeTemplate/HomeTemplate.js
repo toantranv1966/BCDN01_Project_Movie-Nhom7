@@ -1,5 +1,5 @@
-import {Fragment} from 'react';
-import { Route } from 'react-router';
+import { Fragment } from "react";
+import { Route } from "react-router";
 import HomeFooter from "../../components/Home/HomeFooter";
 import HomeHeader from "../../components/Home/HomeHeader/HomeHeader";
 

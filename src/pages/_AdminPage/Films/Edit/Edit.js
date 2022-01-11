@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react";
 // import axios from "axios";
 
+
 import {
   Form,
   Input,
@@ -57,6 +58,7 @@ useEffect(() => {
 
     // Lưu dữ liệu vào formdata
     onSubmit: (values) => {
+      console.log("Values", values);
       values.maNhom = GROUPID;
 
     //   Tạo đối tượng formdata đưa giá trị values từ formik vào formdata

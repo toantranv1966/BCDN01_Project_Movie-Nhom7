@@ -25,6 +25,7 @@ const Home = (props) => {
     dispatch(layDanhSachPhimAction);
     dispatch(layThongTinHeThongRap);
     dispatch(layThongTinLichChieuHeThongRap);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -48,6 +49,17 @@ const Home = (props) => {
     }
   }, [idComponent]);
 
+  // if (!isLoadSuccess) {
+  //   console.log("Home.js - check is LoadSuccess", isLoadSuccess);
+  //   return (
+  //     <Loading>
+  //       <div style={{ width: "100%", textAlign: "center" }}>
+  //         <img src="./img/logo.png" alt="logo" />
+  //         <p>Đang tải dữ liệu ...</p>
+  //       </div>
+  //     </Loading>
+  //   );
+  // }
   return (
     <>
       {mangBannerPhim.length !== 0 && (
@@ -61,4 +73,21 @@ const Home = (props) => {
   );
 };
 
+// const Loading = styled.div`
+//   width: 100%;
+//   height: calc(100vh - 60px);
+//   margin-top: 60px;
+//   background-color: white;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   img {
+//     width: 100px;
+//     margin-bottom: 10px;
+//   }
+//   p {
+//     color: var(--primary-color);
+//     font-weight: 500;
+//   }
+// `;
 export default Home;

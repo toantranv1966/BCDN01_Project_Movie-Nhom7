@@ -30,6 +30,24 @@ export default function Showtime(props) {
     cumRapChieu: [],
   });
 
+  // useEffect( async () => {
+
+  //     try{
+  //         let result = await quanLyRapService.layThongTinHeThongRap();
+
+  //         setstate({
+  //             ...state,
+  //             heThongRapChieu:result.data.content
+  //         })
+
+  //         console.log('result',result.data.content);
+
+  //     }catch(error) {
+  //         console.log(error)
+  //     }
+
+  // }, [])
+
   const handleChangeHeThongRap = async (value) => {
     // Từ hệ thống rạp call api lấy thông tin rạp
     try {
@@ -87,6 +105,8 @@ export default function Showtime(props) {
     >
       <h3 className="text-2xl">Tạo lịch chiếu</h3>
       <Form.Item label="Hệ thống rạp">
+        {/* Cách 1:  */}
+        {/* <Cascader options={state.heThongRapChieu?.map((htr,index)=> ({label:htr.tenHeThongRap,value:htr.tenHeThongRap}))} onChange={handleChangeHeThongRap} placeholder="Chọn hệ thống rạp" /> */}
         <Select
           options={convertSelectHTR()}
           onChange={handleChangeHeThongRap}
@@ -102,6 +122,7 @@ export default function Showtime(props) {
           onChange={handleChangeCumRap}
           placeholder="Chọn cụm rạp"
         />
+        {/* <Select options={state.cumRapChieu?.map((cumRap,index)=>({label:cumRap.tenCumRam,value:cumRap.tenCumRam}))} onChange={handleChangeHeThongRap} placeholder="Chọn cụm rạp" /> */}
       </Form.Item>
       <Form.Item label="Ngày chiếu giờ chiếu">
         <DatePicker

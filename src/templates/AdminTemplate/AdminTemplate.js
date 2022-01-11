@@ -37,9 +37,6 @@ export const AdminTemplate = (props) => {
                     <Menu.Item key="1" icon={<UserOutlined />}>
                       <NavLink to="/admin/users">User</NavLink>
                     </Menu.Item>
-                    <Menu.Item key="11" icon={<FileOutlined />}>
-                      <NavLink to="/admin/users/addnewuser">Add New</NavLink>
-                    </Menu.Item>
                     <SubMenu key="2" icon={<FileOutlined />} title="Films">
                       <Menu.Item key="10" icon={<FileOutlined />}>
                         <NavLink to="/admin/films">Films</NavLink>
@@ -55,7 +52,7 @@ export const AdminTemplate = (props) => {
                     <Component {...propsRoute} />
                   </Content>
                   <Footer style={{ textAlign: "center" }}>
-                    Ant Design Layout
+                    Ant Design Layout example Created by Shrideep
                   </Footer>
                 </Layout>
               </Layout>

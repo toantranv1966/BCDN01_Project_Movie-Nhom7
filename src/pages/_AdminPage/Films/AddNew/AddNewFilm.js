@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// import axios from "axios";
 import { Form, Input, Radio, DatePicker, InputNumber, Switch } from "antd";
 import { useFormik } from "formik";
 import moment from "moment";
@@ -38,12 +39,16 @@ const AddNewFilm = () => {
         } else {
           formdata.append("File", values.hinhAnh, values.hinhAnh.name);
         }
-    }
+      }
+      // Kiểm tra : console.log('formdata',formdata.get('File'));
+      // Gọi Api gửi các giá trị formdata về backend xử lý
+
       dispatch(themPhimUploadHinhAction(formdata));
     },
   });
 
   const handleChangeDatePicker = (value) => {
+    //   console.log("handleChangeDatePicker", moment(value).format('DD/MM/YYYY'));
     let ngayKhoiChieu = moment(value).format("DD/MM/YYYY");
     formik.setFieldValue("ngayKhoiChieu", ngayKhoiChieu);
   };
@@ -81,6 +86,7 @@ const AddNewFilm = () => {
       };
       //   Đem dữ liệu file lưu vào formik
       formik.setFieldValue("hinhAnh", file);
+      // formik.setErrors() : Dùng để validation
     }
   };
 
