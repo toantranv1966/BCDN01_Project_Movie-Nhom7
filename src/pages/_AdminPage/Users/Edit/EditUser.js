@@ -14,17 +14,12 @@ const EditUser = (props) => {
   const [componentSize, setComponentSize] = useState("default");
 //   Kết nối Redux lấy thông tin phim về 
   const {thongTinTaiKhoan, loaiNguoiDung} = useSelector(state=> state.QuanLyNguoiDungReducer)
-  console.log("Thông tin tài khoản",thongTinTaiKhoan);
-  // console.log("Loại người dùng", loaiNguoiDung);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
       let {id} = props.match.params;
-      // const action = layThongTinNguoiDungAction(id);
-      // dispatch(action)
       dispatch(layThongTinNguoiDungAction(id));
-      console.log('Thông tin người dùng',thongTinTaiKhoan);
 
   },[])
 
@@ -53,16 +48,6 @@ const EditUser = (props) => {
       console.log("Values", values);
       values.maNhom = GROUPID;
       dispatch(capNhatThongTinNguoiDungAction(values));
-
-    //   Tạo đối tượng formdata đưa giá trị values từ formik vào formdata
-    // let formdata = new FormData();
-    // for(let key in values){
-    //   formdata.append(key,values[key]);
-    //   console.log("Values",values);
-      
-    // }
-    // Gọi Action : Cập nhật thông tin nguoif dùng
-    // dispatch(capNhatThongTinNguoiDungAction(formdata))
     }
   });
 
