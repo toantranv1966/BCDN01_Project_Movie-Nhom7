@@ -1,5 +1,5 @@
 
-# Dự án Movie CyberSoft ( Ngày bắt đầu : 15/11/2021 ; ngày kết thúc : 07/01/2022)
+# Dự án Movie CyberSoft ( Ngày bắt đầu : 15/11/2021 ; ngày kết thúc : 15/01/2022)
 ## Chức năng:
 - Lọc để tìm kiếm phim, bình luận trên trang chi tiết phim
 - Đăng nhập, đăng ký và đặt vé
