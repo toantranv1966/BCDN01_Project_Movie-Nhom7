@@ -14,6 +14,9 @@ import Register from './pages/Register/Register';
 import AdminLogin from './pages/Login/AdminLogin';
 import AddNewUser from './pages/_AdminPage/Users/AddNew/AddNewUser';
 import EditUser from './pages/_AdminPage/Users/Edit/EditUser';
+import HomeLogin from "./pages/Login/HomeLogin";
+import DetailFilm from "./pages/DetailFilm/DetailFilm";
+import BookTicket from "./pages/BookTicket/BookTicket";
 
 export const history = createBrowserHistory(); 
 
@@ -34,11 +37,13 @@ function App() {
 
         <UserTemplate path="/adminlogin" exact Component={AdminLogin}/>
         <UserTemplate path="/register" exact Component={Register}/>
-        {/* <Route path="/register" exact Component={Register}/> */}
-        
+
+        <Route exact path="/login" component={HomeLogin} />
+        <HomeTemplate path="/bookticket/:idShowTime" exact Component={BookTicket}/>
+        <HomeTemplate path="/:idComponent" exact Component={Home} />
+        <HomeTemplate path="/chitiet/:idFilm" exact Component={DetailFilm} />
       </Switch>
     </Router>
-
   );
 }
 
