@@ -1,5 +1,5 @@
 
-# Dự án Movie CyberSoft ( Ngày bắt đầu : 15/11/2021 ; ngày kết thúc : 07/01/2022)
+# Dự án Movie CyberSoft ( Ngày bắt đầu : 15/11/2021 ; ngày kết thúc : 15/01/2022)
 ## Chức năng:
 - Lọc để tìm kiếm phim, bình luận trên trang chi tiết phim
 - Đăng nhập, đăng ký và đặt vé
@@ -37,10 +37,15 @@ React Hooks, Material-UI, Redux, Redux-thunk, Axios, Bootstrap 4(Css)...
 
 3, Config Redux (configStore.js & index.js)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 ## Phân công công việc dự án movie:
 
 I/ Trần Văn Toàn : Làm phần backend (Quản trị)
 
+<<<<<<< HEAD
 1, Lên kế hoạch
 2, Phân tích yêu cầu
 3, Thiết kế Mockup trang admin
@@ -48,6 +53,11 @@ I/ Trần Văn Toàn : Làm phần backend (Quản trị)
 5, Thiết kế trang AdminTemplate
 6, Thiết kế trang Quản lý danh sách phim + load danh sách phim từ API
 7, Thiết kế trang Thêm phim + chức năng thêm phim
+=======
+## Movie Project Tracker
+
+<<<<<<< HEAD
+>>>>>>> master
 8, Thiết kế trang Edit phim + chức năng edit phim (Sửa lỗi ngày 09/12/2021)
 9, Chức năng xóa phim (Sửa lỗi ngày 09/12/2021)
 10, Chức năng tìm kiếm
@@ -69,6 +79,11 @@ I/ Trần Văn Toàn : Làm phần backend (Quản trị)
 
 
 II/ Đức
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> master
 
 ### 1. Clone repo ( Lấy dự án trên gitHub về local )
 

@@ -1,7 +1,12 @@
-import React, {Fragment, useEffect} from "react";
+import React, { Fragment, useEffect } from "react";
 import { Table } from "antd";
-import { Input, Space } from "antd";
-import { AudioOutlined, DeleteOutlined, EditOutlined, SearchOutlined, WindowsFilled, CalendarOutlined } from "@ant-design/icons";
+import { Input } from "antd";
+import {
+  DeleteOutlined,
+  EditOutlined,
+  SearchOutlined,
+  CalendarOutlined,
+} from "@ant-design/icons";
 import { Button } from "antd/lib/radio";
 import {useSelector, useDispatch} from 'react-redux';
 import {layDanhSachPhimAction, xoaPhimAction} from '../../../redux/actions/QuanLyPhimAction';
@@ -12,12 +17,12 @@ import { history } from "../../../App";
 const { Search } = Input;
 
 export default function Films() {
-// Kết nối Reducer lấy danh sách phim
+  // Kết nối Reducer lấy danh sách phim
 
 const {arrFilm} = useSelector(state=>state.QuanLyPhimReducer);
 
-//Tạo ra hàm dispatch 
-const dispatch = useDispatch();
+  //Tạo ra hàm dispatch
+  const dispatch = useDispatch();
 
 useEffect(() => {
 
@@ -110,19 +115,23 @@ useEffect(() => {
         // Gọi Api layDanhSachPhim
         dispatch(layDanhSachPhimAction(value));
       } 
-
+  
   return (
-    <div >
+    <div>
       <h3 className="text-4xl">Quản lý phim</h3>
-      <Button className="mb-5" onClick={()=>{
-        history.push('/admin/films/addnewfilm');
-      }}>Thêm phim</Button>
+      <Button
+        className="mb-5"
+        onClick={() => {
+          history.push("/admin/films/addnewfilm");
+        }}
+      >
+        Thêm phim
+      </Button>
       <Search
         className="mb-5"
         placeholder="input search text"
-        enterButton= {<SearchOutlined/>}
+        enterButton={<SearchOutlined />}
         size="large"
-
         onSearch={onSearch}
       />
       <Table columns={columns} dataSource={data} onChange={onChange} />
