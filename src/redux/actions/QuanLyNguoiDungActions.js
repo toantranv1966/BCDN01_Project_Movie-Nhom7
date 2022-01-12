@@ -81,7 +81,6 @@ export const layThongTinNguoiDungAction = (taiKhoan) => {
         try {
             // Sử dụng tham số thamSo
             const result = await quanLyNguoiDungService.layThongTinNguoiDung(taiKhoan);
-            console.log('Thông tin tài khoản', result.data.content);
             // Sau khi lấy dữ liệu từ api về => redux (reducer)
             dispatch({
                 type:THONG_TIN_TAI_KHOAN,
