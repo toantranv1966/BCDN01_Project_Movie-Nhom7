@@ -21,6 +21,8 @@ const EditUser = (props) => {
       let {id} = props.match.params;
       dispatch(layThongTinNguoiDungAction(id));
 
+      console.log('thongTinTaiKhoan',thongTinTaiKhoan);
+
   },[])
 
   useEffect(() => {
