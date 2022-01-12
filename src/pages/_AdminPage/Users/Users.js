@@ -117,6 +117,7 @@ export default function Users() {
               if(window.confirm('Bạn có chắc muốn xóa người dùng?' + users.hoTen)){
                 // Gọi action xóa
                 dispatch(xoaNguoiDungAction(users.taiKhoan));
+
               }
             }}><DeleteOutlined style={{color:'red'}}/></span>;
 

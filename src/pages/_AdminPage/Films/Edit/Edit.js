@@ -1,14 +1,8 @@
 import React, { useState,useEffect } from "react";
 // import axios from "axios";
 
-import {
-  Form,
-  Input,
-  Radio,
-  DatePicker,
-  InputNumber,
-  Switch,
-} from "antd";
+
+import {Form, Input, Button, Radio, Select, Cascader, DatePicker, InputNumber, TreeSelect, Switch} from "antd";
 import { useFormik } from "formik";
 import moment from "moment";
 import { useDispatch,useSelector } from "react-redux";
@@ -30,8 +24,6 @@ const dispatch = useDispatch();
 useEffect(() => {
 
     let {id} = props.match.params;
-    // const action = layThongTinPhimAction(id);
-
     dispatch(layThongTinPhimAction(id));
     
 // eslint-disable-next-line react-hooks/exhaustive-deps

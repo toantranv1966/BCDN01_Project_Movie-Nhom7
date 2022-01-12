@@ -32,13 +32,6 @@ const dispatch = useDispatch();
 
       dispatch(themNguoiDungAction(values));
 
-    //   Tạo đối tượng formdata đưa giá trị values từ formik vào formdata
-    // let formData = new FormData();
-    // for(let key in values){
-    //   formData.append(key,values[key]);
-    // }
-
-    // dispatch(themNguoiDungAction(formData));
     },
   });
 
