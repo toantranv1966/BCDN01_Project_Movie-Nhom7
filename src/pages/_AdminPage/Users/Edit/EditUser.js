@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from "react";
+import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux'
 import {layThongTinNguoiDungAction,layThongTinLoaiNguoiDungAction,capNhatThongTinNguoiDungAction} from '../../../../redux/actions/QuanLyNguoiDungActions'
 import {Form,Input,Button,Select,Row,Col} from "antd";
@@ -20,6 +21,7 @@ const EditUser = (props) => {
   useEffect(() => {
       let {id} = props.match.params;
       dispatch(layThongTinNguoiDungAction(id));
+      console.log('thongTinTaiKhoan',thongTinTaiKhoan)
 
   },[])
 

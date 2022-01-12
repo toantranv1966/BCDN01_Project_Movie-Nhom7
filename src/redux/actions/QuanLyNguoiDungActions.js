@@ -57,6 +57,7 @@ export const dangKyAction = (thongTinDangKy) => {
                 })
             }
         }catch(error){
+            alert(error.response.data.content);
             console.log("error",error.response.data);
         }
     }
