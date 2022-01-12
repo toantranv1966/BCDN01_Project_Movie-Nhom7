@@ -34,7 +34,6 @@ function App() {
 
         <UserTemplate path="/adminlogin" exact Component={AdminLogin}/>
         <UserTemplate path="/register" exact Component={Register}/>
-        {/* <Route path="/register" exact Component={Register}/> */}
         
       </Switch>
     </Router>

@@ -95,18 +95,12 @@ const EditUser = (props) => {
       <Form.Item label="Email">
         <Input type={'email'} name="email" onChange={formik.handleChange} value={formik.values.email} />
       </Form.Item>
-      {/* <Form.Item label="Số điện thoại">
-        <Input name="soDT" onChange={formik.handleChange} value={formik.values.soDt}/>
-      </Form.Item> */}
       <Form.Item label="Số điện thoại">
         <Input name="soDt" onChange={formik.handleChange} value={formik.values.soDt}/>
       </Form.Item>
     <Form.Item label="Loại người dùng">
       <Select options={loaiNguoiDung?.map((lnd,index)=>({label:lnd.tenLoai,value:lnd.maLoaiNguoiDung}))}
       onChange={handleChangeLoaiNguoiDung} placeholder="Chọn loại người dùng"/>
-          {/* <Select 
-            options={state.loaiNguoiDung?.map((lnd,index)=>({label:lnd.tenLoai,value:lnd.maLoaiNguoiDung}))}
-            onChange={handleChangeLoaiNguoiDung} placeholder="Chọn loại người dùng" /> */}
     </Form.Item>
     <Form.Item label="Tác vụ">
       <button type="submit" >Sửa</button>

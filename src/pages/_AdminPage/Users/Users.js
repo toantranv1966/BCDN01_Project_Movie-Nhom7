@@ -30,8 +30,6 @@ export default function Users() {
           title: "STT",
           dataIndex: "index",
           width: '2%',
-          // sorter: (a, b) => b.maPhim - a.maPhim,
-          // sortDirections: ['descend','ascend'],
           render: (text,users,index) => {return <Fragment>
             {index + 1}
           </Fragment>},
@@ -50,14 +48,6 @@ export default function Users() {
           render: (text,users,index) => {return <Fragment>
             {users.matKhau}
           </Fragment>},
-          // sorter: (a, b) => {
-          //   let tenPhimA = a.tenPhim.toLowerCase().trim();
-          //   let tenPhimB = b.tenPhim.toLowerCase().trim();
-          //   if(tenPhimA > tenPhimB){
-          //     return 1;
-          //   }
-          //   return -1;
-          // },
           width: '10%',
           sortDirections: ['descend','ascend'],
         },
@@ -124,7 +114,6 @@ export default function Users() {
                 // Gọi action xóa
                 dispatch(xoaNguoiDungAction(users.taiKhoan));
 
-                // dispatch(xoaPhimAction(users.maPhim));
               }
             }}><DeleteOutlined style={{color:'red'}}/></span>;
 
