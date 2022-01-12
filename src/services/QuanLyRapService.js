@@ -1,27 +1,22 @@
-import {baseService} from './baseService'
-import {GROUPID} from '../util/settings/config';
+import { baseService } from "./baseService";
+// import {GROUPID} from '../util/settings/config';
 
-import React, { Component } from 'react'
+// import React from 'react'
 
 export default class QuanLyRapService extends baseService {
+  // constructor() {
+  //     super();
+  // }
 
-    constructor() {
-        super();
-    }
+  layThongTinHeThongRap = () => {
+    return this.get(`/api/QuanLyRap/LayThongTinHeThongRap`);
+  };
 
-    layThongTinHeThongRap = () => {
-
-        return this.get(`/api/QuanLyRap/LayThongTinHeThongRap`);
-        
-    }
-
-    layThongTinCumRam = (maHeThongRap) => {
-
-        return this.get(`/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`);
-        
-    }
-    
+  layThongTinCumRam = (maHeThongRap) => {
+    return this.get(
+      `/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
+    );
+  };
 }
 
 export const quanLyRapService = new QuanLyRapService();
-
