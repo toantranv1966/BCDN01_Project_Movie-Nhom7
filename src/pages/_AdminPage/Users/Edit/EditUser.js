@@ -37,7 +37,7 @@ const EditUser = (props) => {
         taiKhoan: thongTinTaiKhoan.taiKhoan,
         matKhau: thongTinTaiKhoan.matKhau,
         email: thongTinTaiKhoan.email,
-        soDt: thongTinTaiKhoan.soDt,
+        soDT: thongTinTaiKhoan.soDT,
         "maNhom": "",
         maLoaiNguoiDung: thongTinTaiKhoan.maLoaiNguoiDung,
         hoTen: thongTinTaiKhoan.hoTen
@@ -96,7 +96,7 @@ const EditUser = (props) => {
         <Input type={'email'} name="email" onChange={formik.handleChange} value={formik.values.email} />
       </Form.Item>
       <Form.Item label="Số điện thoại">
-        <Input name="soDt" onChange={formik.handleChange} value={formik.values.soDt}/>
+        <Input name="soDT" onChange={formik.handleChange} value={formik.values.soDT}/>
       </Form.Item>
     <Form.Item label="Loại người dùng">
       <Select options={loaiNguoiDung?.map((lnd,index)=>({label:lnd.tenLoai,value:lnd.maLoaiNguoiDung}))}
