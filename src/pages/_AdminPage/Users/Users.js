@@ -1,12 +1,16 @@
-// Import from ReduxMiddleWare.js
 import React, { Fragment, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-
 import { Table } from "antd";
-import { Input, Space } from "antd";
-import { AudioOutlined, DeleteOutlined, EditOutlined, SearchOutlined, WindowsFilled, CalendarOutlined } from "@ant-design/icons";
+import { Input } from "antd";
+import {
+  DeleteOutlined,
+  EditOutlined,
+  SearchOutlined,
+  CalendarOutlined,
+} from "@ant-design/icons";
 import { Button } from "antd/lib/radio";
 import { object } from "yup";
+// import { object } from "yup";
 import { NavLink } from "react-router-dom";
 import { history } from "../../../App";
 import {layDanhSachNguoiDung, xoaNguoiDungAction} from "../../../redux/actions/QuanLyNguoiDungActions"
@@ -137,7 +141,7 @@ export default function Users() {
       } 
 
   return (
-    <div >
+    <div>
       <h3 className="text-4xl">Quản lý User</h3>
       <Button className="mb-5" onClick={()=>{
         history.push('/admin/users/addnewuser');
@@ -145,9 +149,8 @@ export default function Users() {
       <Search
         className="mb-5"
         placeholder="input search text"
-        enterButton= {<SearchOutlined/>}
+        enterButton={<SearchOutlined />}
         size="large"
-
         onSearch={onSearch}
       />
       <Table columns={columns} dataSource={data} onChange={onChange} />
