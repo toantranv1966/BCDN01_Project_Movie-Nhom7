@@ -1,11 +1,6 @@
 import axios from "axios";
 import { DOMAIN } from "../../util/settings/config";
-import {
-  DANG_KY,
-  DANG_NHAP,
-  GET_ALL_USER,
-  GUI_THONG_BAO,
-} from "./types/QuanLyNguoiDungTypes";
+import {  DANG_KY,  DANG_NHAP,  GET_ALL_USER,  GUI_THONG_BAO,} from "./types/QuanLyNguoiDungTypes";
 import { http } from "../../util/settings/setting";
 import { history } from "../../App";
 
