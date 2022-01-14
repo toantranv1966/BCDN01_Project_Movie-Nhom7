@@ -15,8 +15,6 @@ const { Search } = Input;
 export default function Films() {
 // Kết nối Reducer lấy danh sách phim
 
-// const arrFilm = useSelector(rootReducer => rootReducer.FilmReducer.mangPhim);
-// const {arrFilm} = useSelector(state=>state.QuanLyPhimReducer);
 const {arrFilm} = useSelector(state=>state.QuanLyPhimReducer);
 
 //Tạo ra hàm dispatch 
