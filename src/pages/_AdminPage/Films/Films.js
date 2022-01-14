@@ -1,14 +1,10 @@
-import React, { Fragment, useEffect } from "react";
+import React, {Fragment, useEffect} from "react";
 import { Table } from "antd";
-import { Input } from "antd";
-import {
-  DeleteOutlined,
-  EditOutlined,
-  SearchOutlined,
-  CalendarOutlined,
-} from "@ant-design/icons";
+import { Input, Space } from "antd";
+import { AudioOutlined, DeleteOutlined, EditOutlined, SearchOutlined, WindowsFilled, CalendarOutlined } from "@ant-design/icons";
 import { Button } from "antd/lib/radio";
 import {useSelector, useDispatch} from 'react-redux';
+// import {layDanhSachPhimAction} from '../../../redux/actions/FilmActions';
 import {layDanhSachPhimAction, xoaPhimAction} from '../../../redux/actions/QuanLyPhimAction';
 import { object } from "yup";
 import { NavLink } from "react-router-dom";
@@ -17,18 +13,24 @@ import { history } from "../../../App";
 const { Search } = Input;
 
 export default function Films() {
-  // Kết nối Reducer lấy danh sách phim
+// Kết nối Reducer lấy danh sách phim
 
+// const arrFilm = useSelector(rootReducer => rootReducer.FilmReducer.mangPhim);
+// const {arrFilm} = useSelector(state=>state.QuanLyPhimReducer);
 const {arrFilm} = useSelector(state=>state.QuanLyPhimReducer);
 
-  //Tạo ra hàm dispatch
-  const dispatch = useDispatch();
+//Tạo ra hàm dispatch 
+const dispatch = useDispatch();
 
 useEffect(() => {
-
+    //Tạo ra action là function
     dispatch(layDanhSachPhimAction());
     
 }, [])
+
+console.log("Mảng phim", arrFilm);
+
+// Kết thúc Kết nối Reducer lấy danh sách phim
 
     const columns = [
         {
@@ -77,6 +79,8 @@ useEffect(() => {
           },
           render: (text,films,index) => {return <Fragment>
 
+            {/* Chua hoạt động */}
+
             {films.moTa.lenght>50 ? films.moTa.subStr(0,50) + '...' : films.moTa}
 
           </Fragment>},
@@ -94,6 +98,7 @@ useEffect(() => {
               if(window.confirm('Bạn có chắc muốn xóa phim' + films.tenPhim)){
                 // Gọi action xóa
                 dispatch(xoaPhimAction(films.maPhim));
+
               }
 
             }}><DeleteOutlined style={{color:'red'}}/></span>;
@@ -106,32 +111,31 @@ useEffect(() => {
         
       ];
       
+      
       const data = arrFilm;
         
       function onChange(pagination, filters, sorter, extra) {
+        console.log("params", pagination, filters, sorter, extra);
       }
       
       const onSearch = value => {
+        console.log(value);
         // Gọi Api layDanhSachPhim
         dispatch(layDanhSachPhimAction(value));
       } 
-  
+
   return (
-    <div>
+    <div >
       <h3 className="text-4xl">Quản lý phim</h3>
-      <Button
-        className="mb-5"
-        onClick={() => {
-          history.push("/admin/films/addnewfilm");
-        }}
-      >
-        Thêm phim
-      </Button>
+      <Button className="mb-5" onClick={()=>{
+        history.push('/admin/films/addnewfilm');
+      }}>Thêm phim</Button>
       <Search
         className="mb-5"
         placeholder="input search text"
-        enterButton={<SearchOutlined />}
+        enterButton= {<SearchOutlined/>}
         size="large"
+
         onSearch={onSearch}
       />
       <Table columns={columns} dataSource={data} onChange={onChange} />
