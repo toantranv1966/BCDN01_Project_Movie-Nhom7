@@ -1,4 +1,6 @@
-import {baseService} from './baseService'
+// import {baseService} from './baseService'
+// import {baseService} from '../services/'
+import {baseService} from '../services/baseService';
 import {GROUPID} from '../util/settings/config'
 
 export class QuanLyNguoiDungService extends baseService {
