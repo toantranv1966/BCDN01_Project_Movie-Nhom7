@@ -8,10 +8,12 @@
 - Triển khai Ứng dụng web với React App
 
 ## Công nghệ:
-React Hooks, Material-UI, Redux, Redux-thunk, Axios, Bootstrap 4(Css)...
+React, React Hooks, Material-UI, Redux, Redux-thunk, Axios, ant.design, formik...
 
-## Link live demo: 
-- Username: toantv_BCDN01, password: toantv_BCDN01
+## Link live demo: http://localhost:3000/adminlogin
+- Username: toantv_15012022, password: toantv_15012022
+1, Link quản lý User : http://localhost:3000/admin/users
+2, Link quản lý Film : http://localhost:3000/admin/films
 
 ## Ôn tập kiến thức học được
 
@@ -37,15 +39,10 @@ React Hooks, Material-UI, Redux, Redux-thunk, Axios, Bootstrap 4(Css)...
 
 3, Config Redux (configStore.js & index.js)
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 ## Phân công công việc dự án movie:
 
-I/ Trần Văn Toàn : Làm phần backend (Quản trị)
+I/ Trần Văn Toàn : Làm phần quản trị
 
-<<<<<<< HEAD
 1, Lên kế hoạch
 2, Phân tích yêu cầu
 3, Thiết kế Mockup trang admin
@@ -53,11 +50,9 @@ I/ Trần Văn Toàn : Làm phần backend (Quản trị)
 5, Thiết kế trang AdminTemplate
 6, Thiết kế trang Quản lý danh sách phim + load danh sách phim từ API
 7, Thiết kế trang Thêm phim + chức năng thêm phim
-=======
+
 ## Movie Project Tracker
 
-<<<<<<< HEAD
->>>>>>> master
 8, Thiết kế trang Edit phim + chức năng edit phim (Sửa lỗi ngày 09/12/2021)
 9, Chức năng xóa phim (Sửa lỗi ngày 09/12/2021)
 10, Chức năng tìm kiếm
@@ -79,11 +74,7 @@ I/ Trần Văn Toàn : Làm phần backend (Quản trị)
 
 
 II/ Đức
-<<<<<<< HEAD
-=======
 
-
->>>>>>> master
 
 ### 1. Clone repo ( Lấy dự án trên gitHub về local )
 
