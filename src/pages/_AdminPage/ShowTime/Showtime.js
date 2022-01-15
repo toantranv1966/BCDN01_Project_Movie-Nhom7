@@ -107,14 +107,7 @@ export default function Showtime(props) {
         />
       </Form.Item>
       <Form.Item label="Cụm rạp">
-        <Select
-          options={state.cumRapChieu?.map((cumRap, index) => ({
-            label: cumRap.tenCumRam,
-            value: cumRap.maCumRam,
-          }))}
-          onChange={handleChangeCumRap}
-          placeholder="Chọn cụm rạp"
-        />
+          <Select options={state.cumRapChieu?.map((cumRap,index)=>({label:cumRap.tenCumRap,value:cumRap.maCumRap}))} onChange={handleChangeCumRap} placeholder="Chọn cụm rạp"/>
       </Form.Item>
       <Form.Item label="Ngày chiếu giờ chiếu">
         <DatePicker
