@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Form, Select, DatePicker, InputNumber, Button } from "antd";
 import { quanLyRapService } from "../../../services/QuanLyRapService";
 import { useFormik } from "formik";
@@ -29,6 +29,19 @@ export default function Showtime(props) {
     heThongRapChieu: [],
     cumRapChieu: [],
   });
+
+  console.log(state.heThongRapChieu);
+
+  useEffect(async() => {
+    try {
+      let result = await quanLyRapService.layThongTinHeThongRap();
+      setstate({
+        ...state,
+        heThongRapChieu:result.data.content
+      })
+    }catch(error) {
+    }
+  }, [])
 
   const handleChangeHeThongRap = async (value) => {
     // Từ hệ thống rạp call api lấy thông tin rạp

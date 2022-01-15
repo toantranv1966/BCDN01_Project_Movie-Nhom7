@@ -9,7 +9,7 @@ import Films from './pages/_AdminPage/Films/Films';
 import AddNewFilm from './pages/_AdminPage/Films/AddNew/AddNewFilm';
 import Edit from './pages/_AdminPage/Films/Edit/Edit';
 import showtime from './pages/_AdminPage/ShowTime/Showtime';
-// import {UserTemplate} from './templates/UserTemplate/UserTemplate';
+import {UserTemplate} from './templates/UserTemlate/UserTemlate';
 import Register from './pages/Register/Register';
 import AdminLogin from './pages/Login/AdminLogin';
 import AddNewUser from './pages/_AdminPage/Users/AddNew/AddNewUser';
@@ -35,8 +35,8 @@ function App() {
         <AdminTemplate path="/admin/films/edit/:id" exact Component={Edit}/>
         <AdminTemplate path="/admin/films/showtimes/:id" exact Component={showtime}/>
 
-        {/* <UserTemplate path="/adminlogin" exact Component={AdminLogin}/>
-        <UserTemplate path="/register" exact Component={Register}/> */}
+        <UserTemplate path="/adminlogin" exact Component={AdminLogin}/>
+        <UserTemplate path="/register" exact Component={Register}/>
 
         <Route exact path="/login" component={HomeLogin} />
         <HomeTemplate path="/bookticket/:idShowTime" exact Component={BookTicket}/>
