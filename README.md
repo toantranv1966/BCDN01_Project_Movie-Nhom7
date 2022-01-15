@@ -39,7 +39,7 @@ React, React Hooks, Material-UI, Redux, Redux-thunk, Axios, ant.design, formik..
 
 3, Config Redux (configStore.js & index.js)
 
-## Phân công công việc dự án movie:
+## Phân công công việc Dự án Movie CyberSoft:
 
 I/ Trần Văn Toàn : Làm phần quản trị
 
@@ -73,7 +73,26 @@ I/ Trần Văn Toàn : Làm phần quản trị
 24/ Push code lên GitHub & Merge code (07/01/2022)
 
 
-II/ Đức
+II/ Đức : Làm phần người sử dụng
+1, Lên kế hoạch
+2, Phân tích yêu cầu
+3, Thiết kế Mockup trang homepage
+4, Setup dự án ( tạo cấu trúc thư mục chuẩn, cài đặt thư viện )
+5, Thiết kế trang 
+6, Thiết kế trang Quản lý danh sách phim + load danh sách phim từ API
+7, Thiết kế giao diện tỉnh HTML, CSS, JAVASCRIPT
+8, Sử dụng React Router tạo các link
+9, Phân tích chức năng
+10, Thiết kế các trang Home template với các router
+11, Giao diện trang chủ thiết kế carousel
+11, Chức năng đăng ký, đăng nhập
+12, Get API : carousel, danh sách phim
+13, Get API : danh sách rạp, lịch chiếu
+14, Get API : Xem chi tiết phim & lịch chiếu
+15, Chức năng đặt vé
+
+
+
 
 
 ### 1. Clone repo ( Lấy dự án trên gitHub về local )
