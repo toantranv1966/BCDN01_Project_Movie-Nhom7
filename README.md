@@ -71,6 +71,8 @@ I/ Trần Văn Toàn : Làm phần quản trị
 22, Chức năng đăng nhập & đăng ký
 23, Hoàn thiện dự án & tối ưu code (06/01/2022)
 24/ Push code lên GitHub & Merge code (07/01/2022)
+25/ Sửa lỗi call API khi merge code nhóm (14-15/01/2022)
+26/ Chức năng đa ngôn ngữ trang admin (19-20/01/2022)
 
 
 II/ Đức : Làm phần người sử dụng
