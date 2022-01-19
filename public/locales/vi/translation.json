@@ -1,5 +1,8 @@
 {
     "hello": "Xin chào",
     "signin": "Đăng nhập",
-    "signout": "Đăng xuất"
+    "signout": "Đăng xuất",
+    "user" : "Người dùng",
+    "Add New" : "Thêm mới",
+    "Films" : "Phim"
 }
