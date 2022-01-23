@@ -17,6 +17,7 @@ import EditUser from './pages/_AdminPage/Users/Edit/EditUser';
 import HomeLogin from "./pages/Login/HomeLogin";
 import DetailFilm from "./pages/DetailFilm/DetailFilm";
 import BookTicket from "./pages/BookTicket/BookTicket";
+import SignUpScreen from "./pages/Signup/index";
 
 export const history = createBrowserHistory(); 
 
@@ -36,7 +37,8 @@ function App() {
         <AdminTemplate path="/admin/films/showtimes/:id" exact Component={showtime}/>
 
         <UserTemplate path="/adminlogin" exact Component={AdminLogin}/>
-        <UserTemplate path="/register" exact Component={Register}/>
+        {/* <UserTemplate path="/register" exact Component={Register}/> */}
+        <UserTemplate path="/register" exact Component={SignUpScreen}/>
 
         <Route exact path="/login" component={HomeLogin} />
         <HomeTemplate path="/bookticket/:idShowTime" exact Component={BookTicket}/>

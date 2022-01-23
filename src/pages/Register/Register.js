@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import '../Login/AdminLogin.css'
-import { useFormik } from 'formik';
+import { ErrorMessage, useFormik } from 'formik';
 import {useDispatch,useSelector} from 'react-redux';
 import { dangKyAction } from '../../redux/actions/QuanLyNguoiDungActions';
+import * as yup from "yup";
+import {UserSchema} from "../../Validations/UserValidations";
 
 function Register() {
 
@@ -36,9 +38,11 @@ function Register() {
             </Link>
             <div className="login_container">
                 <h1> Đăng ký</h1>
-                <form onSubmit={(event) => {
+                <form onSubmit={async (event) => {
                     event.preventDefault();
                     Formik.handleSubmit(event);
+                    const isValid = await UserSchema.isValid(Formik);
+                    console.log(isValid);
                     }}>
                     <h5>Tài khoản</h5>
                     <input name="taiKhoan" onChange={Formik.handleChange} placeholder="Nhập tài khoản" type='text'/>
