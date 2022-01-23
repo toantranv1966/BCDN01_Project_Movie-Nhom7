@@ -37,8 +37,8 @@ function App() {
         <AdminTemplate path="/admin/films/showtimes/:id" exact Component={showtime}/>
 
         <UserTemplate path="/adminlogin" exact Component={AdminLogin}/>
-        {/* <UserTemplate path="/register" exact Component={Register}/> */}
-        <UserTemplate path="/register" exact Component={SignUpScreen}/>
+        <UserTemplate path="/register" exact Component={Register}/>
+        {/* <UserTemplate path="/register" exact Component={SignUpScreen}/> */}
 
         <Route exact path="/login" component={HomeLogin} />
         <HomeTemplate path="/bookticket/:idShowTime" exact Component={BookTicket}/>
