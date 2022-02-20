@@ -11,6 +11,9 @@ export default class QuanLyDatVeService extends baseService {
   taoLichChieu = (thongTinLichChieu) => {
     return this.post(`/api/QuanLyDatVe/TaoLichChieu`, thongTinLichChieu);
   };
+  datVe = (thongTinDatVe) => {
+    return this.post(`/api/QuanLyDatVe/DatVe`, thongTinDatVe);
+  };
 }
 
 export const quanLyDatVeService = new QuanLyDatVeService();

@@ -25,7 +25,6 @@ const HomeCinemaGroup = () => {
   const dispatch = useDispatch();
   const layLichChieuPhim = useCallback(
     (maHeThongRap) => {
-      console.log("HomeCinema.js - dispatch LayLichChieu");
       dispatch(layThongTinLichChieuHeThongRap(maHeThongRap));
     },
     [dispatch]

@@ -9,6 +9,13 @@ const ButtonGroup = styled.button`
   border-radius: 30px;
   letter-spacing: 1px;
   transition: 0.5s;
+  :disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+    &:hover {
+      background-color: var(--primary-color);
+    }
+  }
   ${(props) => (props.fullWidth ? "width: 100%;" : "")}
   :hover {
     background-color: var(--dark-color);
@@ -24,9 +31,9 @@ const ButtonGroup = styled.button`
     margin-left: 5px;
   }
 `;
-const MVButton = ({ text, onCLick, icon, fullWidth }) => {
+const MVButton = ({ text, onCLick, icon, fullWidth, disabled }) => {
   return (
-    <ButtonGroup onClick={onCLick} fullWidth={fullWidth}>
+    <ButtonGroup onClick={onCLick} fullWidth={fullWidth} disabled={disabled}>
       {text}
       {icon}
     </ButtonGroup>

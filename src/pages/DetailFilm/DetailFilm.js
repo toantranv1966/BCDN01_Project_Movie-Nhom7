@@ -35,7 +35,7 @@ const DetailFilm = (props) => {
   );
   const [isOpen, setOpen] = useState(false);
   const [maHeThongRap, setMaHeThongRap] = useState("");
-  const [activeDate, setActiveDate] = useState(new Date("2021-09-08"));
+  const [activeDate, setActiveDate] = useState(new Date("2021-09-01"));
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -185,14 +185,6 @@ const DetailFilm = (props) => {
               }}
               onClose={() => setOpen(false)}
             />
-            {/* <ButtonGroup
-              onClick={() => {
-                setOpen(true);
-              }}
-            >
-              Xem Trailer
-              <BsFillPlayFill />
-            </ButtonGroup> */}
             <MVButton
               icon={<BsFillPlayFill />}
               onCLick={handleClickTrailer}
@@ -230,7 +222,7 @@ const DetailFilm = (props) => {
               </Slider>
             </ListGroupCinema>
             <DateSlider
-              startDate="09-08-2021"
+              startDate="2021-09-01"
               activeDate={activeDate}
               setActiveDate={setActiveDate}
             />
@@ -307,28 +299,6 @@ const TextGroup = styled.div`
     font-size: 14px;
     font-weight: 700;
     color: #242424;
-  }
-`;
-const ButtonGroup = styled.button`
-  padding: 10px 25px;
-  border: 1px solid transparent;
-  background-color: var(--primary-color);
-  color: white;
-  border-radius: 30px;
-  letter-spacing: 1px;
-  transition: 0.5s;
-  :hover {
-    background-color: var(--dark-color);
-  }
-  :focus {
-    outline: none;
-  }
-  :active {
-    background-color: var(--primary-color);
-  }
-  svg {
-    font-size: 15px;
-    margin-left: 5px;
   }
 `;
 const BottomGroup = styled.div``;

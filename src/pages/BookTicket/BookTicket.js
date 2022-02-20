@@ -2,7 +2,10 @@ import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import {} from "react-redux";
-import { layDanhSachPhongVe } from "../../redux/actions/QuanLyVeAction";
+import {
+  datVePhim,
+  layDanhSachPhongVe,
+} from "../../redux/actions/QuanLyVeAction";
 import { arrDay } from "../../util/settings/helper";
 import Seat from "../../components/BookTicket/Seat";
 import MVButton from "../../components/Home/MVButton";
@@ -163,7 +166,8 @@ const BookTicket = (props) => {
   const handleSeatSelected = useCallback(
     (seat) => {
       setThongTinDatVe((prev) => {
-        prev.maLichChieu = thongTinSuatChieu.thongTinPhim?.maLichChieu;
+        prev.maLichChieu =
+          thongTinSuatChieu.thongTinPhim?.maLichChieu.toString();
         const isSelected = prev.danhSachVe.includes(seat);
         if (isSelected) {
           prev.danhSachVe = prev.danhSachVe.filter(
@@ -177,7 +181,9 @@ const BookTicket = (props) => {
     },
     [thongTinSuatChieu]
   );
-  const handleClickTotal = () => {};
+  const handleClickTotal = () => {
+    dispatch(datVePhim(thongTinDatVe));
+  };
   const renderSeat = () => {
     return thongTinSuatChieu?.danhSachGhe.map((seat) => {
       return (
@@ -195,7 +201,6 @@ const BookTicket = (props) => {
     <>
       {Object.keys(thongTinSuatChieu).length !== 0 && (
         <Container>
-          {console.log(thongTinDatVe)}
           <LeftContainer>
             <TopLeftContainer>
               <TextGroup>
@@ -290,6 +295,7 @@ const BookTicket = (props) => {
                   onCLick={handleClickTotal}
                   text="Thanh toán"
                   fullWidth={true}
+                  disabled={thongTinDatVe.danhSachVe.length === 0}
                 />
               </div>
             </RightBottom>
